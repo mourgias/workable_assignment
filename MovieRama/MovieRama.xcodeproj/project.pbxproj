@@ -22,6 +22,7 @@
 		CD23A9FD286347B4001024EE /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = CD23A9FC286347B4001024EE /* .swiftlint.yml */; };
 		CD23AA042863485E001024EE /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD23AA032863485E001024EE /* HTTPClient.swift */; };
 		CD23AA062863486B001024EE /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD23AA052863486B001024EE /* UIColor+Extension.swift */; };
+		CD23AA0A28635061001024EE /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD23AA0928635061001024EE /* TabBarViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,7 @@
 		CD23A9FC286347B4001024EE /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		CD23AA032863485E001024EE /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		CD23AA052863486B001024EE /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		CD23AA0928635061001024EE /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		CE294C449F843BB8C3F1AD7E /* Pods-MovieRamaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieRamaTests.release.xcconfig"; path = "Target Support Files/Pods-MovieRamaTests/Pods-MovieRamaTests.release.xcconfig"; sourceTree = "<group>"; };
 		D157D1D3FBCC8EA6A7BC900D /* Pods_MovieRamaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MovieRamaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB5648FD54D1B58ED8839186 /* Pods-MovieRamaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieRamaTests.debug.xcconfig"; path = "Target Support Files/Pods-MovieRamaTests/Pods-MovieRamaTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				CD23AA0728634C46001024EE /* Root */,
+				CD23AA0828635046001024EE /* TabBar */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -199,6 +202,14 @@
 				CD23A9CF28634473001024EE /* RootViewController.swift */,
 			);
 			path = Root;
+			sourceTree = "<group>";
+		};
+		CD23AA0828635046001024EE /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				CD23AA0928635061001024EE /* TabBarViewController.swift */,
+			);
+			path = TabBar;
 			sourceTree = "<group>";
 		};
 		D2006D11167774FD534AE3BF /* Pods */ = {
@@ -452,6 +463,7 @@
 				CD23A9CC28634473001024EE /* AppDelegate.swift in Sources */,
 				CD23AA042863485E001024EE /* HTTPClient.swift in Sources */,
 				CD23A9CE28634473001024EE /* SceneDelegate.swift in Sources */,
+				CD23AA0A28635061001024EE /* TabBarViewController.swift in Sources */,
 				CD23AA062863486B001024EE /* UIColor+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -558,7 +570,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -612,7 +624,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
