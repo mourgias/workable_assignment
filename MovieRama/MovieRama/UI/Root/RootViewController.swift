@@ -28,7 +28,8 @@ class RootViewController: UIViewController {
         
         let tabBarViewController = TabBarViewController()
         
-        let home = UIViewController()
+        let home = PopularMoviesViewController()
+        
         let favorites = UIViewController()
         
         home.tabBarItem = UITabBarItem(title: "Home", image: UIImage(systemName: "film"), tag: 0)
