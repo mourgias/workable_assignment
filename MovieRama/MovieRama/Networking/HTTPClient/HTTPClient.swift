@@ -6,6 +6,10 @@
 import Foundation
 import Combine
 
+typealias APIResponse<T> = AnyPublisher<T, NetworkError>
+
+let baseImageURLw500: String = "https://image.tmdb.org/t/p/w500"
+
 class HTTPClient {
     
     static let shared = HTTPClient()
