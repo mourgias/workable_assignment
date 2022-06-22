@@ -6,7 +6,9 @@
 import Foundation
 import UIKit
 
-class PopularMoviesViewController: UIViewController {
+class PopularMoviesViewController: BaseViewController {
+    
+    // MARK: Properties
     
     var viewModel: PopularMoviesViewModelProtocol = PopularMoviesViewModel()
     
@@ -17,11 +19,15 @@ class PopularMoviesViewController: UIViewController {
         bindViewModel()
     }
     
+    // MARK: SetupView
+    
     private func setupView() {
         
     }
     
-    func bindViewModel() {
+    // MARK: Bind View Model
+    
+    private func bindViewModel() {
         viewModel.fetchPopular()
     }
 }

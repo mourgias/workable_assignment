@@ -29,6 +29,9 @@
 		CD23AA1728636D4A001024EE /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD23AA1628636D4A001024EE /* NetworkError.swift */; };
 		CD23AA1928636D59001024EE /* URLSessionNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD23AA1828636D59001024EE /* URLSessionNetwork.swift */; };
 		CD23AA1B28636D63001024EE /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD23AA1A28636D63001024EE /* Router.swift */; };
+		CD23AA2128638B95001024EE /* Foundation+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD23AA2028638B95001024EE /* Foundation+Extension.swift */; };
+		CD23AA2328638BC0001024EE /* Publisher+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD23AA2228638BC0001024EE /* Publisher+Extension.swift */; };
+		CD23AA2528638C04001024EE /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD23AA2428638C04001024EE /* BaseViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +79,9 @@
 		CD23AA1628636D4A001024EE /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		CD23AA1828636D59001024EE /* URLSessionNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionNetwork.swift; sourceTree = "<group>"; };
 		CD23AA1A28636D63001024EE /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		CD23AA2028638B95001024EE /* Foundation+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Foundation+Extension.swift"; sourceTree = "<group>"; };
+		CD23AA2228638BC0001024EE /* Publisher+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Publisher+Extension.swift"; sourceTree = "<group>"; };
+		CD23AA2428638C04001024EE /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		CE294C449F843BB8C3F1AD7E /* Pods-MovieRamaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieRamaTests.release.xcconfig"; path = "Target Support Files/Pods-MovieRamaTests/Pods-MovieRamaTests.release.xcconfig"; sourceTree = "<group>"; };
 		D157D1D3FBCC8EA6A7BC900D /* Pods_MovieRamaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MovieRamaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB5648FD54D1B58ED8839186 /* Pods-MovieRamaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieRamaTests.debug.xcconfig"; path = "Target Support Files/Pods-MovieRamaTests/Pods-MovieRamaTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -186,6 +192,7 @@
 		CD23AA002863480E001024EE /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				CD23AA1E28638B55001024EE /* BaseViewController */,
 				CD23AA0728634C46001024EE /* Root */,
 				CD23AA0828635046001024EE /* TabBar */,
 				CD23AA0B28635EF8001024EE /* PopularMovies */,
@@ -204,7 +211,7 @@
 		CD23AA0228634819001024EE /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				CD23AA052863486B001024EE /* UIColor+Extension.swift */,
+				CD23AA1F28638B70001024EE /* Extensions */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -244,6 +251,40 @@
 				CD23AA1A28636D63001024EE /* Router.swift */,
 			);
 			path = HTTPClient;
+			sourceTree = "<group>";
+		};
+		CD23AA1C28638AEA001024EE /* Foundation+Extension */ = {
+			isa = PBXGroup;
+			children = (
+				CD23AA2028638B95001024EE /* Foundation+Extension.swift */,
+			);
+			path = "Foundation+Extension";
+			sourceTree = "<group>";
+		};
+		CD23AA1D28638B03001024EE /* Combine+Publisher */ = {
+			isa = PBXGroup;
+			children = (
+				CD23AA2228638BC0001024EE /* Publisher+Extension.swift */,
+			);
+			path = "Combine+Publisher";
+			sourceTree = "<group>";
+		};
+		CD23AA1E28638B55001024EE /* BaseViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CD23AA2428638C04001024EE /* BaseViewController.swift */,
+			);
+			path = BaseViewController;
+			sourceTree = "<group>";
+		};
+		CD23AA1F28638B70001024EE /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				CD23AA1C28638AEA001024EE /* Foundation+Extension */,
+				CD23AA1D28638B03001024EE /* Combine+Publisher */,
+				CD23AA052863486B001024EE /* UIColor+Extension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		D2006D11167774FD534AE3BF /* Pods */ = {
@@ -495,7 +536,10 @@
 			files = (
 				CD23AA14286368F9001024EE /* PopularMoviesService.swift in Sources */,
 				CD23A9D028634473001024EE /* RootViewController.swift in Sources */,
+				CD23AA2328638BC0001024EE /* Publisher+Extension.swift in Sources */,
 				CD23A9CC28634473001024EE /* AppDelegate.swift in Sources */,
+				CD23AA2128638B95001024EE /* Foundation+Extension.swift in Sources */,
+				CD23AA2528638C04001024EE /* BaseViewController.swift in Sources */,
 				CD23AA0D28635F1B001024EE /* PopularMoviesViewController.swift in Sources */,
 				CD23AA1B28636D63001024EE /* Router.swift in Sources */,
 				CD23AA042863485E001024EE /* HTTPClient.swift in Sources */,
