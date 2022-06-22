@@ -1,0 +1,47 @@
+opt_in_rules:
+#- force_unwrapping
+- force_cast
+- function_parameter_count
+- cyclomatic_complexity
+#- file_header
+
+disabled_rules:
+- line_length
+- colon
+- trailing_whitespace
+- unused_closure_parameter
+- shorthand_operator
+- redundant_void_return
+- redundant_optional_initialization
+- type_body_length
+- function_body_length
+- superfluous_disable_command
+- redundant_string_enum_value
+- identifier_name
+- type_name
+- weak_delegate
+- class_delegate_protocol
+- cyclomatic_complexity
+- syntactic_sugar
+- unused_enumerated
+- implicit_getter
+- function_parameter_count
+- comment_spacing
+- large_tuple
+
+- force_unwrapping
+
+file_length:
+  - 700 # warning
+  - 1200 # error
+  
+excluded: # paths to ignore during linting. Takes precedence over `included`.
+- Carthage
+- Pods
+
+# -force_unwrapping: error
+force_cast: error
+vertical_whitespace: error
+opening_brace: error
+comma: error
+force_try: error

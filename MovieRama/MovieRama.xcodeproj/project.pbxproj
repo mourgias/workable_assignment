@@ -7,15 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		12C503D61A1518B024E0F8B6 /* Pods_MovieRamaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D157D1D3FBCC8EA6A7BC900D /* Pods_MovieRamaTests.framework */; };
+		25997BF74C0C1E379A4F87AF /* Pods_MovieRama_MovieRamaUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FAD0684E74A6C918D10CEAD /* Pods_MovieRama_MovieRamaUITests.framework */; };
+		278219497BFF3BE845D11F6F /* Pods_MovieRama.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7EB5503FE600F8ECF49CF93 /* Pods_MovieRama.framework */; };
 		CD23A9CC28634473001024EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD23A9CB28634473001024EE /* AppDelegate.swift */; };
 		CD23A9CE28634473001024EE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD23A9CD28634473001024EE /* SceneDelegate.swift */; };
-		CD23A9D028634473001024EE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD23A9CF28634473001024EE /* ViewController.swift */; };
+		CD23A9D028634473001024EE /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD23A9CF28634473001024EE /* RootViewController.swift */; };
 		CD23A9D328634473001024EE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD23A9D128634473001024EE /* Main.storyboard */; };
 		CD23A9D528634474001024EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD23A9D428634474001024EE /* Assets.xcassets */; };
 		CD23A9D828634474001024EE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD23A9D628634474001024EE /* LaunchScreen.storyboard */; };
 		CD23A9E328634474001024EE /* MovieRamaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD23A9E228634474001024EE /* MovieRamaTests.swift */; };
 		CD23A9ED28634474001024EE /* MovieRamaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD23A9EC28634474001024EE /* MovieRamaUITests.swift */; };
 		CD23A9EF28634474001024EE /* MovieRamaUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD23A9EE28634474001024EE /* MovieRamaUITestsLaunchTests.swift */; };
+		CD23A9FD286347B4001024EE /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = CD23A9FC286347B4001024EE /* .swiftlint.yml */; };
+		CD23AA042863485E001024EE /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD23AA032863485E001024EE /* HTTPClient.swift */; };
+		CD23AA062863486B001024EE /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD23AA052863486B001024EE /* UIColor+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,10 +42,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1E94D53AF80E78F9266B99C7 /* Pods-MovieRama-MovieRamaUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieRama-MovieRamaUITests.debug.xcconfig"; path = "Target Support Files/Pods-MovieRama-MovieRamaUITests/Pods-MovieRama-MovieRamaUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		2FAD0684E74A6C918D10CEAD /* Pods_MovieRama_MovieRamaUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MovieRama_MovieRamaUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		46DB65A7DDCFCB420400DD3C /* Pods-MovieRama-MovieRamaUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieRama-MovieRamaUITests.release.xcconfig"; path = "Target Support Files/Pods-MovieRama-MovieRamaUITests/Pods-MovieRama-MovieRamaUITests.release.xcconfig"; sourceTree = "<group>"; };
+		580D044A384BB6565DF7F3C0 /* Pods-MovieRama.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieRama.release.xcconfig"; path = "Target Support Files/Pods-MovieRama/Pods-MovieRama.release.xcconfig"; sourceTree = "<group>"; };
 		CD23A9C828634473001024EE /* MovieRama.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieRama.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD23A9CB28634473001024EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CD23A9CD28634473001024EE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		CD23A9CF28634473001024EE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CD23A9CF28634473001024EE /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		CD23A9D228634473001024EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CD23A9D428634474001024EE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CD23A9D728634474001024EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +59,14 @@
 		CD23A9E828634474001024EE /* MovieRamaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MovieRamaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD23A9EC28634474001024EE /* MovieRamaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieRamaUITests.swift; sourceTree = "<group>"; };
 		CD23A9EE28634474001024EE /* MovieRamaUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieRamaUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		CD23A9FC286347B4001024EE /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		CD23AA032863485E001024EE /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
+		CD23AA052863486B001024EE /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		CE294C449F843BB8C3F1AD7E /* Pods-MovieRamaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieRamaTests.release.xcconfig"; path = "Target Support Files/Pods-MovieRamaTests/Pods-MovieRamaTests.release.xcconfig"; sourceTree = "<group>"; };
+		D157D1D3FBCC8EA6A7BC900D /* Pods_MovieRamaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MovieRamaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DB5648FD54D1B58ED8839186 /* Pods-MovieRamaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieRamaTests.debug.xcconfig"; path = "Target Support Files/Pods-MovieRamaTests/Pods-MovieRamaTests.debug.xcconfig"; sourceTree = "<group>"; };
+		E7EB5503FE600F8ECF49CF93 /* Pods_MovieRama.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MovieRama.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FB81F00F78D3CA03377C369E /* Pods-MovieRama.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieRama.debug.xcconfig"; path = "Target Support Files/Pods-MovieRama/Pods-MovieRama.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				278219497BFF3BE845D11F6F /* Pods_MovieRama.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				12C503D61A1518B024E0F8B6 /* Pods_MovieRamaTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,6 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				25997BF74C0C1E379A4F87AF /* Pods_MovieRama_MovieRamaUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,10 +100,13 @@
 		CD23A9BF28634473001024EE = {
 			isa = PBXGroup;
 			children = (
+				CD23A9FC286347B4001024EE /* .swiftlint.yml */,
 				CD23A9CA28634473001024EE /* MovieRama */,
 				CD23A9E128634474001024EE /* MovieRamaTests */,
 				CD23A9EB28634474001024EE /* MovieRamaUITests */,
 				CD23A9C928634473001024EE /* Products */,
+				D2006D11167774FD534AE3BF /* Pods */,
+				D4C5F5DE60A1FD5E665E19F5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,13 +123,11 @@
 		CD23A9CA28634473001024EE /* MovieRama */ = {
 			isa = PBXGroup;
 			children = (
-				CD23A9CB28634473001024EE /* AppDelegate.swift */,
-				CD23A9CD28634473001024EE /* SceneDelegate.swift */,
-				CD23A9CF28634473001024EE /* ViewController.swift */,
-				CD23A9D128634473001024EE /* Main.storyboard */,
-				CD23A9D428634474001024EE /* Assets.xcassets */,
-				CD23A9D628634474001024EE /* LaunchScreen.storyboard */,
-				CD23A9D928634474001024EE /* Info.plist */,
+				CD23A9FE286347E8001024EE /* AppDelegate */,
+				CD23AA0228634819001024EE /* Core */,
+				CD23AA0128634812001024EE /* Networking */,
+				CD23AA002863480E001024EE /* UI */,
+				CD23A9FF286347F7001024EE /* Supporting Files */,
 			);
 			path = MovieRama;
 			sourceTree = "<group>";
@@ -127,6 +149,73 @@
 			path = MovieRamaUITests;
 			sourceTree = "<group>";
 		};
+		CD23A9FE286347E8001024EE /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				CD23A9CB28634473001024EE /* AppDelegate.swift */,
+				CD23A9CD28634473001024EE /* SceneDelegate.swift */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		CD23A9FF286347F7001024EE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CD23A9D128634473001024EE /* Main.storyboard */,
+				CD23A9D428634474001024EE /* Assets.xcassets */,
+				CD23A9D628634474001024EE /* LaunchScreen.storyboard */,
+				CD23A9D928634474001024EE /* Info.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CD23AA002863480E001024EE /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				CD23A9CF28634473001024EE /* RootViewController.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		CD23AA0128634812001024EE /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				CD23AA032863485E001024EE /* HTTPClient.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		CD23AA0228634819001024EE /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				CD23AA052863486B001024EE /* UIColor+Extension.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		D2006D11167774FD534AE3BF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FB81F00F78D3CA03377C369E /* Pods-MovieRama.debug.xcconfig */,
+				580D044A384BB6565DF7F3C0 /* Pods-MovieRama.release.xcconfig */,
+				1E94D53AF80E78F9266B99C7 /* Pods-MovieRama-MovieRamaUITests.debug.xcconfig */,
+				46DB65A7DDCFCB420400DD3C /* Pods-MovieRama-MovieRamaUITests.release.xcconfig */,
+				DB5648FD54D1B58ED8839186 /* Pods-MovieRamaTests.debug.xcconfig */,
+				CE294C449F843BB8C3F1AD7E /* Pods-MovieRamaTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		D4C5F5DE60A1FD5E665E19F5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E7EB5503FE600F8ECF49CF93 /* Pods_MovieRama.framework */,
+				2FAD0684E74A6C918D10CEAD /* Pods_MovieRama_MovieRamaUITests.framework */,
+				D157D1D3FBCC8EA6A7BC900D /* Pods_MovieRamaTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -134,9 +223,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CD23A9F228634474001024EE /* Build configuration list for PBXNativeTarget "MovieRama" */;
 			buildPhases = (
+				E15549C768AB0C2162A332BC /* [CP] Check Pods Manifest.lock */,
 				CD23A9C428634473001024EE /* Sources */,
 				CD23A9C528634473001024EE /* Frameworks */,
 				CD23A9C628634473001024EE /* Resources */,
+				CD23A9FB28634752001024EE /* SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -151,6 +242,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CD23A9F528634474001024EE /* Build configuration list for PBXNativeTarget "MovieRamaTests" */;
 			buildPhases = (
+				18AB7FC25C7BC1D481D8ED84 /* [CP] Check Pods Manifest.lock */,
 				CD23A9DA28634474001024EE /* Sources */,
 				CD23A9DB28634474001024EE /* Frameworks */,
 				CD23A9DC28634474001024EE /* Resources */,
@@ -169,6 +261,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CD23A9F828634474001024EE /* Build configuration list for PBXNativeTarget "MovieRamaUITests" */;
 			buildPhases = (
+				82153CAF35DE03ACA24851B0 /* [CP] Check Pods Manifest.lock */,
 				CD23A9E428634474001024EE /* Sources */,
 				CD23A9E528634474001024EE /* Frameworks */,
 				CD23A9E628634474001024EE /* Resources */,
@@ -232,6 +325,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD23A9FD286347B4001024EE /* .swiftlint.yml in Resources */,
 				CD23A9D828634474001024EE /* LaunchScreen.storyboard in Resources */,
 				CD23A9D528634474001024EE /* Assets.xcassets in Resources */,
 				CD23A9D328634473001024EE /* Main.storyboard in Resources */,
@@ -254,14 +348,103 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		18AB7FC25C7BC1D481D8ED84 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MovieRamaTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		82153CAF35DE03ACA24851B0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MovieRama-MovieRamaUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CD23A9FB28634752001024EE /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint --fix && swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+		E15549C768AB0C2162A332BC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MovieRama-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		CD23A9C428634473001024EE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CD23A9D028634473001024EE /* ViewController.swift in Sources */,
+				CD23A9D028634473001024EE /* RootViewController.swift in Sources */,
 				CD23A9CC28634473001024EE /* AppDelegate.swift in Sources */,
+				CD23AA042863485E001024EE /* HTTPClient.swift in Sources */,
 				CD23A9CE28634473001024EE /* SceneDelegate.swift in Sources */,
+				CD23AA062863486B001024EE /* UIColor+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -433,6 +616,7 @@
 		};
 		CD23A9F328634474001024EE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FB81F00F78D3CA03377C369E /* Pods-MovieRama.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -440,7 +624,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = S54QJB2K5Q;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = MovieRama/Info.plist;
+				INFOPLIST_FILE = "MovieRama/Supporting Files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = LaunchScreen;
@@ -462,6 +646,7 @@
 		};
 		CD23A9F428634474001024EE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 580D044A384BB6565DF7F3C0 /* Pods-MovieRama.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -469,7 +654,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = S54QJB2K5Q;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = MovieRama/Info.plist;
+				INFOPLIST_FILE = "MovieRama/Supporting Files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = LaunchScreen;
@@ -491,6 +676,7 @@
 		};
 		CD23A9F628634474001024EE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DB5648FD54D1B58ED8839186 /* Pods-MovieRamaTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -511,6 +697,7 @@
 		};
 		CD23A9F728634474001024EE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CE294C449F843BB8C3F1AD7E /* Pods-MovieRamaTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -531,6 +718,7 @@
 		};
 		CD23A9F928634474001024EE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1E94D53AF80E78F9266B99C7 /* Pods-MovieRama-MovieRamaUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -549,6 +737,7 @@
 		};
 		CD23A9FA28634474001024EE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 46DB65A7DDCFCB420400DD3C /* Pods-MovieRama-MovieRamaUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
