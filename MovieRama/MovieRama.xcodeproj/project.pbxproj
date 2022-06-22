@@ -172,7 +172,7 @@
 		CD23AA002863480E001024EE /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				CD23A9CF28634473001024EE /* RootViewController.swift */,
+				CD23AA0728634C46001024EE /* Root */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -191,6 +191,14 @@
 				CD23AA052863486B001024EE /* UIColor+Extension.swift */,
 			);
 			path = Core;
+			sourceTree = "<group>";
+		};
+		CD23AA0728634C46001024EE /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				CD23A9CF28634473001024EE /* RootViewController.swift */,
+			);
+			path = Root;
 			sourceTree = "<group>";
 		};
 		D2006D11167774FD534AE3BF /* Pods */ = {
