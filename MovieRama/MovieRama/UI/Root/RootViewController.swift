@@ -7,8 +7,6 @@ import UIKit
 
 class RootViewController: UIViewController {
     
-    private var tabBarViewController: UIViewController?
-    
     // MARK: ViewDidLoad
     
     override func viewDidLoad() {
@@ -22,18 +20,32 @@ class RootViewController: UIViewController {
         view.backgroundColor = .white
         
         self.setupTabBar()
-        self.showRootViewController()
     }
     
     // MARK: Setup Tab Bar
     
     func setupTabBar() {
         
+        let tabBarViewController = TabBarViewController()
+        
+        let home = UIViewController()
+        let favorites = UIViewController()
+        
+        home.tabBarItem = UITabBarItem(title: "Home", image: UIImage(systemName: "film"), tag: 0)
+        favorites.tabBarItem = UITabBarItem(title: "Favorites", image: UIImage(systemName: "heart"), tag: 1)
+        
+        tabBarViewController.viewControllers = [home, favorites]
+        
+        showRootViewController(rootVC: tabBarViewController)
     }
     
     // MARK: Setup Root View Controller
     
-    func showRootViewController() {
-        
+    func showRootViewController(rootVC: UIViewController) {
+        rootVC.willMove(toParent: self)
+        addChild(rootVC)
+        rootVC.didMove(toParent: self)
+        view.addSubview(rootVC.view)
+        rootVC.view.bounds = view.bounds
     }
 }
