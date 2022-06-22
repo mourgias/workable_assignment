@@ -5,7 +5,7 @@
 
 import Foundation
 
-protocol PopularMoviesServiceProtocol: ServiceProtocol {
+protocol PopularMoviesServiceProtocol {
     
 }
 

@@ -5,16 +5,16 @@
 
 import Foundation
 
-protocol PopularMoviesViewModelProtocol: ViewModelProtocol {
+protocol PopularMoviesViewModelProtocol {
     
     func fetchPopular()
 }
 
 class PopularMoviesViewModel: PopularMoviesViewModelProtocol {
     
-    var service: ServiceProtocol!
+    var service: PopularMoviesServiceProtocol!
     
-    init(service: ServiceProtocol = PopularMoviesService()) {
+    init(service: PopularMoviesServiceProtocol = PopularMoviesService()) {
         self.service = service
     }
     
