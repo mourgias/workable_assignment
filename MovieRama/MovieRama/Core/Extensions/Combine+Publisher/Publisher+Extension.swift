@@ -6,6 +6,8 @@
 import Foundation
 import Combine
 
+typealias Cancellable = Set<AnyCancellable>
+
 extension Publisher {
     
     func done(receive: @escaping ((Self.Output) -> Void), catchError: ((Error) -> Void)? = nil) -> AnyCancellable {

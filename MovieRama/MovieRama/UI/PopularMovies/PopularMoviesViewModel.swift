@@ -12,6 +12,8 @@ protocol PopularMoviesViewModelProtocol {
 
 class PopularMoviesViewModel: PopularMoviesViewModelProtocol {
     
+    private var cancellable = Cancellable()
+    
     var service: PopularMoviesServiceProtocol!
     
     init(service: PopularMoviesServiceProtocol = PopularMoviesService()) {
@@ -24,5 +26,12 @@ class PopularMoviesViewModel: PopularMoviesViewModelProtocol {
     
     func fetchPopular() {
         
+        service.fetchPopular(nextPage: 1).done { response in
+            print(response.toPrintedJSON)
+            
+        } catchError: { error in
+            print(error)
+            
+        }.store(in: &cancellable)
     }
 }
