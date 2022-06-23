@@ -33,6 +33,8 @@
 		CD23AA2328638BC0001024EE /* Publisher+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD23AA2228638BC0001024EE /* Publisher+Extension.swift */; };
 		CD23AA2528638C04001024EE /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD23AA2428638C04001024EE /* BaseViewController.swift */; };
 		CD23AA29286390E9001024EE /* APIResponsePopularMovies.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD23AA28286390E9001024EE /* APIResponsePopularMovies.swift */; };
+		CD4E747628645C3F0054220B /* Layout+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4E747528645C3F0054220B /* Layout+View.swift */; };
+		CD4E747B28645D930054220B /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4E747A28645D930054220B /* UIView+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +86,8 @@
 		CD23AA2228638BC0001024EE /* Publisher+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Publisher+Extension.swift"; sourceTree = "<group>"; };
 		CD23AA2428638C04001024EE /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		CD23AA28286390E9001024EE /* APIResponsePopularMovies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResponsePopularMovies.swift; sourceTree = "<group>"; };
+		CD4E747528645C3F0054220B /* Layout+View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Layout+View.swift"; sourceTree = "<group>"; };
+		CD4E747A28645D930054220B /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		CE294C449F843BB8C3F1AD7E /* Pods-MovieRamaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieRamaTests.release.xcconfig"; path = "Target Support Files/Pods-MovieRamaTests/Pods-MovieRamaTests.release.xcconfig"; sourceTree = "<group>"; };
 		D157D1D3FBCC8EA6A7BC900D /* Pods_MovieRamaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MovieRamaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB5648FD54D1B58ED8839186 /* Pods-MovieRamaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieRamaTests.debug.xcconfig"; path = "Target Support Files/Pods-MovieRamaTests/Pods-MovieRamaTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -283,9 +287,9 @@
 		CD23AA1F28638B70001024EE /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				CD4E747728645D470054220B /* UIKit+Extension */,
 				CD23AA1C28638AEA001024EE /* Foundation+Extension */,
 				CD23AA1D28638B03001024EE /* Combine+Publisher */,
-				CD23AA052863486B001024EE /* UIColor+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -304,6 +308,16 @@
 				CD23AA28286390E9001024EE /* APIResponsePopularMovies.swift */,
 			);
 			path = Popular;
+			sourceTree = "<group>";
+		};
+		CD4E747728645D470054220B /* UIKit+Extension */ = {
+			isa = PBXGroup;
+			children = (
+				CD4E747528645C3F0054220B /* Layout+View.swift */,
+				CD23AA052863486B001024EE /* UIColor+Extension.swift */,
+				CD4E747A28645D930054220B /* UIView+Extension.swift */,
+			);
+			path = "UIKit+Extension";
 			sourceTree = "<group>";
 		};
 		D2006D11167774FD534AE3BF /* Pods */ = {
@@ -569,6 +583,8 @@
 				CD23AA062863486B001024EE /* UIColor+Extension.swift in Sources */,
 				CD23AA12286368EE001024EE /* PopularMoviesViewModel.swift in Sources */,
 				CD23AA1728636D4A001024EE /* NetworkError.swift in Sources */,
+				CD4E747B28645D930054220B /* UIView+Extension.swift in Sources */,
+				CD4E747628645C3F0054220B /* Layout+View.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
