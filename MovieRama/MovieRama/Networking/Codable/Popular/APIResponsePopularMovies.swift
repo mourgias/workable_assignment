@@ -5,7 +5,7 @@
 
 import Foundation
 
-struct APIReponsePopularMovies: Codable {
+struct APIResponsePopularMovies: Codable {
     
     let page: Int
     let popularMovies: [APIResponsePopularMovie]
