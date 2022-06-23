@@ -14,7 +14,7 @@ extension UITableViewCell {
 
 extension UIView {
     
-    func addSubViews(_ views: [UIView]) {
+    func addSubviews(_ views: [UIView]) {
         views.forEach { addSubview($0) }
     }
 }
