@@ -46,6 +46,7 @@
 		CD4E74952865CE0A0054220B /* Jura-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CD4E74932865CE0A0054220B /* Jura-SemiBold.ttf */; };
 		CD4E74972865CE410054220B /* AppFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4E74962865CE410054220B /* AppFonts.swift */; };
 		CD4E749A2865CEBA0054220B /* String+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4E74992865CEBA0054220B /* String+Style.swift */; };
+		CD4E749D2865E95E0054220B /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4E749C2865E95E0054220B /* BaseNavigationController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -110,6 +111,7 @@
 		CD4E74932865CE0A0054220B /* Jura-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Jura-SemiBold.ttf"; sourceTree = "<group>"; };
 		CD4E74962865CE410054220B /* AppFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFonts.swift; sourceTree = "<group>"; };
 		CD4E74992865CEBA0054220B /* String+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Style.swift"; sourceTree = "<group>"; };
+		CD4E749C2865E95E0054220B /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		CE294C449F843BB8C3F1AD7E /* Pods-MovieRamaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieRamaTests.release.xcconfig"; path = "Target Support Files/Pods-MovieRamaTests/Pods-MovieRamaTests.release.xcconfig"; sourceTree = "<group>"; };
 		D157D1D3FBCC8EA6A7BC900D /* Pods_MovieRamaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MovieRamaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB5648FD54D1B58ED8839186 /* Pods-MovieRamaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieRamaTests.debug.xcconfig"; path = "Target Support Files/Pods-MovieRamaTests/Pods-MovieRamaTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -220,11 +222,12 @@
 		CD23AA002863480E001024EE /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				CD4E7480286470110054220B /* MovieTableViewCell */,
-				CD4E747C286460C40054220B /* MovieDataModel */,
-				CD23AA1E28638B55001024EE /* BaseViewController */,
+				CD4E749B2865E1F10054220B /* BaseNavigationController */,
 				CD23AA0728634C46001024EE /* Root */,
 				CD23AA0828635046001024EE /* TabBar */,
+				CD23AA1E28638B55001024EE /* BaseViewController */,
+				CD4E7480286470110054220B /* MovieTableViewCell */,
+				CD4E747C286460C40054220B /* MovieDataModel */,
 				CD23AA0B28635EF8001024EE /* PopularMovies */,
 			);
 			path = UI;
@@ -415,6 +418,14 @@
 				CD4E74992865CEBA0054220B /* String+Style.swift */,
 			);
 			path = Style;
+			sourceTree = "<group>";
+		};
+		CD4E749B2865E1F10054220B /* BaseNavigationController */ = {
+			isa = PBXGroup;
+			children = (
+				CD4E749C2865E95E0054220B /* BaseNavigationController.swift */,
+			);
+			path = BaseNavigationController;
 			sourceTree = "<group>";
 		};
 		D2006D11167774FD534AE3BF /* Pods */ = {
@@ -674,6 +685,7 @@
 				CD23A9CC28634473001024EE /* AppDelegate.swift in Sources */,
 				CD23AA2128638B95001024EE /* Foundation+Extension.swift in Sources */,
 				CD4E74882864849B0054220B /* Pagination.swift in Sources */,
+				CD4E749D2865E95E0054220B /* BaseNavigationController.swift in Sources */,
 				CD23AA2528638C04001024EE /* BaseViewController.swift in Sources */,
 				CD23AA0D28635F1B001024EE /* PopularMoviesViewController.swift in Sources */,
 				CD4E74902865C3BB0054220B /* ImageCache.swift in Sources */,

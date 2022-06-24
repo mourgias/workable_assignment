@@ -28,7 +28,7 @@ class RootViewController: UIViewController {
         
         let tabBarViewController = TabBarViewController()
         
-        let home = PopularMoviesViewController()
+        let home = BaseNavigationController(rootViewController: PopularMoviesViewController())
         
         let favorites = UIViewController()
         

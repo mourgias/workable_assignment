@@ -41,6 +41,8 @@ class PopularMoviesViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        addNavigationBar(title: "Popular")
+
         viewModel.fetchPopular()
         
         setupView()
@@ -54,7 +56,7 @@ class PopularMoviesViewController: BaseViewController {
         view.addSubview(tableView)
         
         tableView.layout(
-            .top(0),
+            .top(navBarHeight),
             .leading(0),
             .trailing(0),
             .bottom(0)
