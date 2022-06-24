@@ -11,9 +11,8 @@ class MovieTableViewCell: UITableViewCell {
     
     private let wrapperView: UIView = {
         let view = UIView()
-        view.backgroundColor = .lightGray
-        //view.clipsToBounds = true
-        //view.addCornerRadius(10)
+        view.backgroundColor = .appLightGray
+        view.clipsToBounds = true
         return view
     }()
     
@@ -22,6 +21,21 @@ class MovieTableViewCell: UITableViewCell {
         label.numberOfLines = 0
         return label
     }()
+    
+    private let posterImageView: UIImageView = {
+        let imageView = UIImageView()
+        return imageView
+    }()
+    
+    //private let voteAverageLabel = UILabel()
+    
+    private let calendarImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "calendar_icon")
+        return imageView
+    }()
+    
+    private let releaseDateLabel = UILabel()
     
     // MARK: Init
     
@@ -44,8 +58,8 @@ class MovieTableViewCell: UITableViewCell {
         contentView.backgroundColor = .clear
         
         contentView.addSubview(wrapperView)
-        
-        wrapperView.addSubviews([titleLabel])
+        wrapperView.addSubviews([titleLabel, posterImageView,
+                                 calendarImageView, releaseDateLabel])
     }
     
     // MARK: Setup Layout
@@ -61,15 +75,40 @@ class MovieTableViewCell: UITableViewCell {
         
         titleLabel.layout(
             .top(15),
-            .leading(10),
-            .trailing(15),
-            .bottom(15)
+            .leading(10, .to(posterImageView, .trailing)),
+            .trailing(15)
         )
+        
+        posterImageView.layout(
+            .top(0),
+            .leading(0),
+            .bottom(0),
+            .height(150),
+            .width(120)
+        )
+        
+        calendarImageView.layout(
+            .top(10, .to(titleLabel, .bottom)),
+            .leading(0, .to(titleLabel, .leading))
+        )
+        
+        releaseDateLabel.layout(
+            .leading(5, .to(calendarImageView, .trailing)),
+            .centerY(0, .to(calendarImageView))
+        )
+
     }
  
     // MARK: Set Content
     
     func setContent(movie: MovieDataModel) {
-        titleLabel.text = movie.title
+        
+        titleLabel.attributedText = movie.title.style(font: .semiBold, size: 16)
+
+        //voteAverageLabel.attributedText = movie.voteAveragePercent.style(font: .semiBold, size: 13)
+
+        releaseDateLabel.attributedText = movie.releaseDateFormatted.style(font: .semiBold, size: 13)
+
+        posterImageView.setImage(with: movie.posterImageUrl, placeholder: UIImage(named: "poster_placeholder"))
     }
 }

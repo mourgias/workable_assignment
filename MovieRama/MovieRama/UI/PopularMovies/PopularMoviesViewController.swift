@@ -104,7 +104,7 @@ extension PopularMoviesViewController: UITableViewDelegate, UITableViewDataSourc
         if indexPath.section == lastSectionIndex && indexPath.row == lastRowIndex {
             // print("will request new data 🔃")
             
-            // Unwrap first, then avoid next api call if reach the last page
+            // check if reach the last page
             if !viewModel.isReachLastPage {
                 self.viewModel.fetchPopular(isFromScroll: true)
             }
