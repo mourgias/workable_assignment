@@ -133,4 +133,12 @@ extension PopularMoviesViewController: UITableViewDelegate, UITableViewDataSourc
         
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        guard let movie = viewModel.dataModel(for: indexPath.row) else { return }
+        
+        let detailsViewController = MovieDetailsViewController()
+        baseNavigationController?.pushViewController(detailsViewController, animated: true)
+    }
 }
