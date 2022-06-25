@@ -12,6 +12,13 @@ extension UITableViewCell {
     }
 }
 
+public extension UICollectionViewCell {
+    
+    static var id: String {
+        return String(describing: self)
+    }
+}
+
 extension UIView {
     
     func addSubviews(_ views: [UIView]) {
