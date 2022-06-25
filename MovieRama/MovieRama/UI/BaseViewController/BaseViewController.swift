@@ -79,5 +79,8 @@ extension BaseViewController {
             .leading(25),
             .top(0, .to(view.safeAreaLayoutGuide, .top))
         )
+        
+        leftNavBarButton.setImage(UIImage(named: "back_icon"), for: .normal)
+        leftNavBarButton.tintColor = .white
     }
 }
