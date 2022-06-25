@@ -133,6 +133,11 @@ struct APIReponseCast: Codable {
     var departmentType: CrewDepartment? {
         return CrewDepartment(rawValue: department ?? "")
     }
+    
+    var profileImage: String {
+        let url = baseImageURLw500 + (profilePath ?? "")
+        return url
+    }
 }
 
 enum CrewDepartment: String, Codable {

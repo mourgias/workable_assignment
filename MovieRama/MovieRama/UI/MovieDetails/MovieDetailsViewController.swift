@@ -27,13 +27,13 @@ class MovieDetailsViewController: BaseViewController {
     
     private let bottomContentView: UIView = {
         let view = UIView()
+        view.backgroundColor = .appDarkGray
         view.roundMaskedCorners([.topLeft, .topRight], radius: 13)
         return view
     }()
     
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
-        scrollView.bounces = true
         scrollView.showsVerticalScrollIndicator = false
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.alwaysBounceVertical = true
@@ -53,6 +53,8 @@ class MovieDetailsViewController: BaseViewController {
         label.numberOfLines = 0
         return label
     }()
+    
+    private let genreLabel = UILabel()
     
     private let posterImageView: UIImageView = {
         let imageView = UIImageView()
@@ -87,12 +89,6 @@ class MovieDetailsViewController: BaseViewController {
         return label
     }()
     
-    private let castLabel: UILabel = {
-        let label = UILabel()
-        label.attributedText = "Cast".style(font: .semiBold, size: 16)
-        return label
-    }()
-    
     private let castView = CastCollectionView()
     
     // MARK: ViewDidLoad
@@ -103,8 +99,6 @@ class MovieDetailsViewController: BaseViewController {
         setupView()
         setupLayout()
         bindViewModel()
-        
-        // setContent()
     }
     
     // MARK: SetupView
@@ -120,11 +114,11 @@ class MovieDetailsViewController: BaseViewController {
         
         wrapperView.addSubviews([transparentView, bottomContentView])
         
-        transparentView.addSubviews([titleLabel])
+        transparentView.addSubviews([titleLabel, genreLabel])
         
         bottomContentView.addSubviews([posterImageView, favoriteButton,
-                                favoritesLabel, overviewLabel,
-                                summaryLabel, castView])
+                                       favoritesLabel, overviewLabel,
+                                       summaryLabel, castView])
 
         leftNavBarButton.addTarget(self, action: #selector(dismissViewController), for: .touchUpInside)
         
@@ -179,7 +173,11 @@ class MovieDetailsViewController: BaseViewController {
             .trailing(38)
         )
         
-        bottomContentView.backgroundColor = .darkGray
+        genreLabel.layout(
+            .top(10, .to(titleLabel, .bottom)),
+            .centerX(0)
+        )
+        
         bottomContentView.layout(
             .top(0, .to(transparentView, .bottom)),
             .leading(0),
@@ -193,6 +191,16 @@ class MovieDetailsViewController: BaseViewController {
             .width(95),
             .top(-40),
             .leading(30)
+        )
+        
+        favoriteButton.layout(
+            .leading(15, .to(posterImageView, .trailing)),
+            .top(30)
+        )
+        
+        favoritesLabel.layout(
+            .leading(10, .to(favoriteButton, .trailing)),
+            .centerY(0, .to(favoriteButton))
         )
         
         overviewLabel.layout(
@@ -227,20 +235,20 @@ class MovieDetailsViewController: BaseViewController {
         }.store(in: &cancellable)
     }
     
-    private func setContent(with details: APIReponseMovieDetails? = nil) {
+    private func setContent(with details: MovieDetailsDataModel? = nil) {
         guard let details = details else {
             return
         }
         // let url = "https://image.tmdb.org/t/p/w500/zGLHX92Gk96O1DJvLil7ObJTbaL.jpg"
-        backDropImageView.setImage(with: details.backDropImageUrl, placeholder: nil, cacheMethod: .memory)
+        backDropImageView.setImage(with: details.backDropImage, placeholder: nil, cacheMethod: .memory)
         
         titleLabel.attributedText = details.title.style(font: .semiBold, size: 20, alignment: .center)
         
-        posterImageView.setImage(with: details.posterImageUrl, cacheMethod: .memory)
+        posterImageView.setImage(with: details.posterImage, cacheMethod: .memory)
         
-        summaryLabel.attributedText = details.overview?.style(font: .medium, size: 12)
+        summaryLabel.attributedText = details.summary?.style(font: .medium, size: 12)
         
-        // view.layoutIfNeeded()
+        genreLabel.attributedText = details.genre.style(font: .medium, size: 14)
     }
     
     @objc

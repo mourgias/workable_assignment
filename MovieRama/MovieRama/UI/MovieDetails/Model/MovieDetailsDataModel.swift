@@ -10,7 +10,7 @@ struct MovieDetailsDataModel {
     let backDropImage: String
     let title: String
     let summary: String?
-    let genre: String?
+    let genre: String
     let posterImage: String
     let duration: String
     let releaseDate: String
