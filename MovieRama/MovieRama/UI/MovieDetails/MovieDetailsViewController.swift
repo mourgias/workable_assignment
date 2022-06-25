@@ -93,6 +93,8 @@ class MovieDetailsViewController: BaseViewController {
         return label
     }()
     
+    private let castView = CastCollectionView()
+    
     // MARK: ViewDidLoad
     
     override func viewDidLoad() {
@@ -122,7 +124,7 @@ class MovieDetailsViewController: BaseViewController {
         
         bottomContentView.addSubviews([posterImageView, favoriteButton,
                                 favoritesLabel, overviewLabel,
-                                summaryLabel, castLabel])
+                                summaryLabel, castView])
 
         leftNavBarButton.addTarget(self, action: #selector(dismissViewController), for: .touchUpInside)
         
@@ -204,9 +206,10 @@ class MovieDetailsViewController: BaseViewController {
             .trailing(30)
         )
         
-        castLabel.layout(
-            .leading(30),
-            .top(15, .to(summaryLabel, .bottom)),
+        castView.layout(
+            .leading(0),
+            .trailing(0),
+            .top(20, .to(summaryLabel, .bottom)),
             .bottom(30)
         )
         
