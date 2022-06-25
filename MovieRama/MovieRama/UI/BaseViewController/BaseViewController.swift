@@ -7,9 +7,18 @@ import UIKit
 
 class BaseViewController: UIViewController {
     
+    enum ButtonType {
+        case back
+    }
+    
     private var navBarBackgroundView = UIView()
     
     private var titleLabel = UILabel()
+    
+    private(set) var leftNavBarButton: UIButton = {
+        let button = UIButton(type: .system)
+        return button
+    }()
     
     var navBarHeight: CGFloat {
         get {
@@ -17,7 +26,7 @@ class BaseViewController: UIViewController {
             return 60.0 + (window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0)
         }
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
@@ -27,26 +36,48 @@ class BaseViewController: UIViewController {
         view.backgroundColor = .appDarkGray
     }
     
-    func addNavigationBar(title: String) {
+    func addNavigationBar(title: String? = nil, leftButton: ButtonType? = nil, hideNavBackground: Bool = false) {
         
-        view.addSubview(navBarBackgroundView)
-        navBarBackgroundView.addSubview(titleLabel)
+        if !hideNavBackground {
+            view.addSubview(navBarBackgroundView)
+            navBarBackgroundView.layout(
+                .top(0),
+                .leading(),
+                .trailing(),
+                .height(navBarHeight)
+            )
+            
+            if let title = title {
+                navBarBackgroundView.addSubview(titleLabel)
+                
+                titleLabel.layout(
+                    .leading(25),
+                    .top(0, .to(view.safeAreaLayoutGuide, .top))
+                )
+                
+                titleLabel.attributedText = title.style(font: .semiBold, size: 25)
+            }
+        }
+        
+        navBarBackgroundView.backgroundColor = .appLightGray
+        
+        switch leftButton {
+        case .back:
+            setupBackButton()
+        case .none:
+            break
+        }
+    }
+}
 
-        navBarBackgroundView.layout(
-            .top(0),
-            .leading(),
-            .trailing(),
-            .height(navBarHeight)
-        )
+extension BaseViewController {
+    
+    func setupBackButton() {
+        view.addSubview(leftNavBarButton)
         
-        titleLabel.layout(
+        leftNavBarButton.layout(
             .leading(25),
             .top(0, .to(view.safeAreaLayoutGuide, .top))
         )
-        
-        titleLabel.attributedText = title.style(font: .semiBold, size: 25)
-        
-        navBarBackgroundView.backgroundColor = .appLightGray
     }
-
 }
