@@ -13,6 +13,7 @@ class MovieTableViewCell: UITableViewCell {
         let view = UIView()
         view.backgroundColor = .appLightGray
         view.clipsToBounds = true
+        view.addCornerRadius(10)
         return view
     }()
     

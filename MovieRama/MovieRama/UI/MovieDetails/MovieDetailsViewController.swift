@@ -25,7 +25,11 @@ class MovieDetailsViewController: BaseViewController {
         return view
     }()
     
-    private let bottomContentView = UIView()
+    private let bottomContentView: UIView = {
+        let view = UIView()
+        view.roundMaskedCorners([.topLeft, .topRight], radius: 13)
+        return view
+    }()
     
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -52,6 +56,8 @@ class MovieDetailsViewController: BaseViewController {
     
     private let posterImageView: UIImageView = {
         let imageView = UIImageView()
+        imageView.addCornerRadius(10)
+        imageView.clipsToBounds = true
         return imageView
     }()
     
