@@ -48,6 +48,8 @@ class MovieTableViewCell: UITableViewCell {
         return button
     }()
     
+    private let ratingView = CircularProgress()
+    
     // MARK: Init
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -78,7 +80,7 @@ class MovieTableViewCell: UITableViewCell {
         contentView.addSubview(wrapperView)
         wrapperView.addSubviews([titleLabel, posterImageView,
                                  calendarImageView, releaseDateLabel,
-                                 favoriteButton])
+                                 favoriteButton, ratingView])
     }
     
     // MARK: Setup Layout
@@ -112,14 +114,22 @@ class MovieTableViewCell: UITableViewCell {
         )
         
         releaseDateLabel.layout(
-            .leading(5, .to(calendarImageView, .trailing)),
+            .leading(7, .to(calendarImageView, .trailing)),
             .centerY(0, .to(calendarImageView))
         )
         
         favoriteButton.layout(
-            .leading(0, .to(titleLabel, .leading)),
-            .top(10, .to(releaseDateLabel, .bottom))
+            .centerY(0, .to(ratingView)),
+            .trailing(15)
         )
+        
+        ratingView.layout(
+            .bottom(10),
+            .leading(0, .to(titleLabel, .leading)),
+            .height(40),
+            .width(40)
+        )
+        
     }
  
     // MARK: Set Content
@@ -135,5 +145,7 @@ class MovieTableViewCell: UITableViewCell {
         posterImageView.setImage(with: movie.posterImageUrl, placeholder: UIImage(named: "poster_placeholder"))
         
         favoriteButton.isSelected = movie.isFavorite
+        
+        ratingView.setProgress(movie.voteAverageValue, label: movie.voteAveragePercent)
     }
 }

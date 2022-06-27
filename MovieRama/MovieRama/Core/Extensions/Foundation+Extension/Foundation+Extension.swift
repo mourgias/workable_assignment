@@ -12,7 +12,7 @@ extension NSNumber {
         formatter.numberStyle = .percent
         formatter.minimumIntegerDigits = 1
         formatter.maximumIntegerDigits = 3
-        formatter.maximumFractionDigits = 2
+        formatter.maximumFractionDigits = 0
         return formatter.string(from: self)!
     }
 }
