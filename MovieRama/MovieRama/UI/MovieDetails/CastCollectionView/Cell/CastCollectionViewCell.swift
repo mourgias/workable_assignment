@@ -7,11 +7,20 @@ import UIKit
 
 class CastCollectionViewCell: UICollectionViewCell {
     
+    private let wrapperView = UIView()
+    
     private let actorImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
         imageView.image = UIImage(named: "cast_placeholder")
+        imageView.clipsToBounds = true
         return imageView
+    }()
+    
+    private let nameLabel: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 0
+        return label
     }()
     
     override init(frame: CGRect) {
@@ -30,19 +39,25 @@ class CastCollectionViewCell: UICollectionViewCell {
     }
     
     private func setupView() {
-        addSubview(actorImageView)
+        addSubviews([actorImageView, nameLabel])
         
         actorImageView.layout(
+            .centerX(0),
             .top(0),
-            .leading(0),
-            .trailing(0),
-            .bottom(0),
-            .height(50),
-            .width(50)
+            .height(65),
+            .width(65)
+        )
+        
+        nameLabel.layout(
+            .top(5, .to(actorImageView, .bottom)),
+            .leading(3),
+            .trailing(3),
+            .bottom(0)
         )
     }
     
-    func setContent(image: String?) {
-        actorImageView.setImage(with: image, placeholder: UIImage(named: "cast_placeholder"), cacheMethod: .memory)
+    func setContent(character: MovieCharacter) {
+        actorImageView.setImage(with: character.image, placeholder: UIImage(named: "cast_placeholder"))
+        nameLabel.attributedText = character.name.style(font: .semiBold, size: 12, alignment: .center)
     }
 }

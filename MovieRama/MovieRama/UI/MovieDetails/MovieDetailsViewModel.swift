@@ -53,6 +53,12 @@ class MovieDetailsViewModel {
         
         let similar = buildSimilar(similar)
         
+        let cast = details.credits.cast.compactMap { cast in
+            MovieCharacter(name: cast.name ?? "", image: cast.profileImage)
+        }
+        
+        let director = details.credits.director
+        
         let dataModel = MovieDetailsDataModel(backDropImage: details.backDropImageUrl,
                                               title: details.title,
                                               summary: details.overview,
@@ -61,7 +67,9 @@ class MovieDetailsViewModel {
                                               duration: details.duration,
                                               releaseDate: details.releaseDateFormatter,
                                               reviews: reviews,
-                                              similar: similar)
+                                              similar: similar,
+                                              cast: cast,
+                                              director: director)
         
         movieDetailsSubject.send(dataModel)
     }

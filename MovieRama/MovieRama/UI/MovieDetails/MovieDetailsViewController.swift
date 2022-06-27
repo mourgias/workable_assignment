@@ -249,6 +249,8 @@ class MovieDetailsViewController: BaseViewController {
         summaryLabel.attributedText = details.summary?.style(font: .medium, size: 12)
         
         genreLabel.attributedText = details.genre.style(font: .medium, size: 14)
+        
+        castView.cast = details.cast
     }
     
     @objc

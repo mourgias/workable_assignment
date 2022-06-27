@@ -7,6 +7,16 @@ import UIKit
 
 class CastCollectionView: UIView {
     
+    var cast: [MovieCharacter] = [] {
+        didSet {
+            // Keep it on main thread
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
+                self.collectionView.reloadData()
+            }
+        }
+    }
+    
     // MARK: UI Properties
     
     private let castLabel: UILabel = {
@@ -18,12 +28,12 @@ class CastCollectionView: UIView {
     private(set) lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        layout.minimumLineSpacing = 30 // CGFloat.greatestFiniteMagnitude //30 // horizontal
-        layout.minimumInteritemSpacing = 30 // CGFloat.greatestFiniteMagnitude // vertical
+        layout.minimumLineSpacing = 1// CGFloat.greatestFiniteMagnitude // 30 // horizontal
+        layout.minimumInteritemSpacing = 10// CGFloat.greatestFiniteMagnitude // vertical
         
-        layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
-        layout.itemSize = CGSize(width: 50, height: 50)// UICollectionViewFlowLayout.automaticSize
-//        layout.sectionInset = UIEdgeInsets(top: 0, left: 20, bottom: 60, right: 20)
+        // layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+        // layout.itemSize = CGSize(width: 50, height: 50)// UICollectionViewFlowLayout.automaticSize
+        // layout.sectionInset = UIEdgeInsets(top: 0, left: 20, bottom: 60, right: 20)
         
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.contentInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
@@ -58,16 +68,15 @@ class CastCollectionView: UIView {
         
         castLabel.layout(
             .top(0),
-            .leading(30)
+            .leading(37)
         )
         
-        collectionView.backgroundColor = .red
         collectionView.layout(
-            .top(10, .to(castLabel, .bottom)),
+            .top(15, .to(castLabel, .bottom)),
             .leading(0),
             .trailing(0),
             .bottom(10),
-            .height(50)
+            .height(100)
         )
     }
 }
@@ -77,21 +86,33 @@ class CastCollectionView: UIView {
 extension CastCollectionView: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 20
+        return cast.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let character = cast[indexPath.row]
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CastCollectionViewCell.id, for: indexPath)
         
         switch cell {
         case let (cell as CastCollectionViewCell):
-            cell.setContent(image: "")
+            cell.setContent(character: character)
             
         default:
             break
         }
         
         return cell
+    }
+}
+
+// MARK: UICollectionViewDelegateFlowLayout
+
+extension CastCollectionView: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let size = CGSize(width: 100, height: 100)
+        return size
     }
 }
