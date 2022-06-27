@@ -7,6 +7,10 @@ import UIKit
 
 class MovieDetailsViewController: BaseViewController {
     
+    struct Defines {
+        static let leadingAlignment: CGFloat = 30
+    }
+    
     private var cancellable = Cancellable()
    
     private(set) var viewModel = MovieDetailsViewModel()
@@ -91,6 +95,8 @@ class MovieDetailsViewController: BaseViewController {
     
     private let castView = CastCollectionView()
     
+    private let directorView = DirectorView()
+    
     private let similarMoviesView = SimilarMoviesCollectionView()
     
     // MARK: ViewDidLoad
@@ -121,7 +127,7 @@ class MovieDetailsViewController: BaseViewController {
         bottomContentView.addSubviews([posterImageView, favoriteButton,
                                        favoritesLabel, overviewLabel,
                                        summaryLabel, castView,
-                                       similarMoviesView])
+                                       directorView, similarMoviesView])
 
         leftNavBarButton.addTarget(self, action: #selector(dismissViewController), for: .touchUpInside)
         
@@ -193,7 +199,7 @@ class MovieDetailsViewController: BaseViewController {
             .height(140),
             .width(95),
             .top(-40),
-            .leading(30)
+            .leading(Defines.leadingAlignment)
         )
         
         favoriteButton.layout(
@@ -207,12 +213,12 @@ class MovieDetailsViewController: BaseViewController {
         )
         
         overviewLabel.layout(
-            .leading(30),
+            .leading(Defines.leadingAlignment),
             .top(15, .to(posterImageView, .bottom))
         )
         
         summaryLabel.layout(
-            .leading(30),
+            .leading(Defines.leadingAlignment),
             .top(10, .to(overviewLabel, .bottom)),
             .trailing(30)
         )
@@ -223,8 +229,14 @@ class MovieDetailsViewController: BaseViewController {
             .top(20, .to(summaryLabel, .bottom))
         )
         
-        similarMoviesView.layout(
+        directorView.layout(
             .top(15, .to(castView, .bottom)),
+            .leading(Defines.leadingAlignment),
+            .trailing(0)
+        )
+        
+        similarMoviesView.layout(
+            .top(20, .to(directorView, .bottom)),
             .leading(0),
             .trailing(0),
             .bottom(30)
@@ -259,6 +271,8 @@ class MovieDetailsViewController: BaseViewController {
         genreLabel.attributedText = details.genre.style(font: .medium, size: 14)
         
         castView.cast = details.cast
+        
+        directorView.setContent(director: details.director)
         
         similarMoviesView.similarMovies = details.similar
     }

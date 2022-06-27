@@ -59,6 +59,7 @@
 		CD4E74B8286714C10054220B /* APIResponseReviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4E74B7286714C10054220B /* APIResponseReviews.swift */; };
 		CDB0BF76286998B900DF514D /* SimilarMoviesCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB0BF75286998B900DF514D /* SimilarMoviesCollectionView.swift */; };
 		CDB0BF79286998D200DF514D /* SimilarMoviesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB0BF78286998D200DF514D /* SimilarMoviesCollectionViewCell.swift */; };
+		CDB0BF7C28699A7400DF514D /* DirectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB0BF7B28699A7400DF514D /* DirectorView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -136,6 +137,7 @@
 		CD4E74B7286714C10054220B /* APIResponseReviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResponseReviews.swift; sourceTree = "<group>"; };
 		CDB0BF75286998B900DF514D /* SimilarMoviesCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimilarMoviesCollectionView.swift; sourceTree = "<group>"; };
 		CDB0BF78286998D200DF514D /* SimilarMoviesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimilarMoviesCollectionViewCell.swift; sourceTree = "<group>"; };
+		CDB0BF7B28699A7400DF514D /* DirectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectorView.swift; sourceTree = "<group>"; };
 		CE294C449F843BB8C3F1AD7E /* Pods-MovieRamaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieRamaTests.release.xcconfig"; path = "Target Support Files/Pods-MovieRamaTests/Pods-MovieRamaTests.release.xcconfig"; sourceTree = "<group>"; };
 		D157D1D3FBCC8EA6A7BC900D /* Pods_MovieRamaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MovieRamaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB5648FD54D1B58ED8839186 /* Pods-MovieRamaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieRamaTests.debug.xcconfig"; path = "Target Support Files/Pods-MovieRamaTests/Pods-MovieRamaTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -540,6 +542,7 @@
 		CDB0BF7A28699A2800DF514D /* DirectorView */ = {
 			isa = PBXGroup;
 			children = (
+				CDB0BF7B28699A7400DF514D /* DirectorView.swift */,
 			);
 			path = DirectorView;
 			sourceTree = "<group>";
@@ -800,6 +803,7 @@
 				CD23AA14286368F9001024EE /* PopularMoviesService.swift in Sources */,
 				CD23A9D028634473001024EE /* RootViewController.swift in Sources */,
 				CD4E749F2865EB870054220B /* UIViewController+Extension.swift in Sources */,
+				CDB0BF7C28699A7400DF514D /* DirectorView.swift in Sources */,
 				CD23AA2328638BC0001024EE /* Publisher+Extension.swift in Sources */,
 				CD4E74B5286711080054220B /* APIResponseSimilarMovies.swift in Sources */,
 				CD4E74A72866F49C0054220B /* APIResponseMovieDetails.swift in Sources */,
