@@ -91,7 +91,7 @@ class MovieDetailsViewModel {
         
         let similar = similar?.results.compactMap { movie in
             
-            SimilarDataModel(posterImage: movie.posterPath ?? "", title: movie.title)
+            SimilarDataModel(posterImage: movie.posterImageUrl, title: movie.title)
         }
         
         return similar ?? []

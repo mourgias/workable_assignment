@@ -91,6 +91,8 @@ class MovieDetailsViewController: BaseViewController {
     
     private let castView = CastCollectionView()
     
+    private let similarMoviesView = SimilarMoviesCollectionView()
+    
     // MARK: ViewDidLoad
     
     override func viewDidLoad() {
@@ -118,7 +120,8 @@ class MovieDetailsViewController: BaseViewController {
         
         bottomContentView.addSubviews([posterImageView, favoriteButton,
                                        favoritesLabel, overviewLabel,
-                                       summaryLabel, castView])
+                                       summaryLabel, castView,
+                                       similarMoviesView])
 
         leftNavBarButton.addTarget(self, action: #selector(dismissViewController), for: .touchUpInside)
         
@@ -217,10 +220,15 @@ class MovieDetailsViewController: BaseViewController {
         castView.layout(
             .leading(0),
             .trailing(0),
-            .top(20, .to(summaryLabel, .bottom)),
-            .bottom(30)
+            .top(20, .to(summaryLabel, .bottom))
         )
         
+        similarMoviesView.layout(
+            .top(15, .to(castView, .bottom)),
+            .leading(0),
+            .trailing(0),
+            .bottom(30)
+        )
         // view.layoutIfNeeded()
     }
 
@@ -251,6 +259,8 @@ class MovieDetailsViewController: BaseViewController {
         genreLabel.attributedText = details.genre.style(font: .medium, size: 14)
         
         castView.cast = details.cast
+        
+        similarMoviesView.similarMovies = details.similar
     }
     
     @objc

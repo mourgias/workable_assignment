@@ -44,4 +44,9 @@ struct APIResponseSimilarMovie: Codable {
         case voteAverage = "vote_average"
         case voteCount = "vote_count"
     }
+    
+    var posterImageUrl: String {
+        let url = baseImageURLw500 + (posterPath ?? "")
+        return url
+    }
 }
