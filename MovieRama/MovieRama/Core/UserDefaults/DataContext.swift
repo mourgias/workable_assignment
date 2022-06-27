@@ -51,9 +51,3 @@ class DataContext {
 //        self.favorites = favorites
 //    }
 }
-
-struct Favorite: Codable {
-    
-    let id: String
-    let title: String
-}
