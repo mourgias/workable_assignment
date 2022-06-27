@@ -107,6 +107,7 @@ class MovieDetailsViewController: BaseViewController {
         setupView()
         setupLayout()
         bindViewModel()
+        bindButtonHandlers()
     }
     
     // MARK: SetupView
@@ -128,8 +129,6 @@ class MovieDetailsViewController: BaseViewController {
                                        favoritesLabel, overviewLabel,
                                        summaryLabel, castView,
                                        directorView, similarMoviesView])
-
-        leftNavBarButton.addTarget(self, action: #selector(dismissViewController), for: .touchUpInside)
         
         addNavigationBar(leftButton: .back, hideNavBackground: true)
     }
@@ -255,10 +254,36 @@ class MovieDetailsViewController: BaseViewController {
         }.store(in: &cancellable)
     }
     
+    private func bindButtonHandlers() {
+        
+        favoriteButton
+            .publisher(for: .touchUpInside)
+            .sink { [weak self] _ in
+                guard let self = self else { return }
+                self.favoriteButton.isSelected.toggle()
+                
+                if self.favoriteButton.isSelected {
+                    self.viewModel.addToFavorites()
+                } else {
+                    self.viewModel.removeFromFavorites()
+                }
+            }
+            .store(in: &cancellable)
+        
+        leftNavBarButton
+            .publisher(for: .touchUpInside)
+            .sink { [weak self] _ in
+                guard let self = self else { return }
+                self.dismissViewController()
+            }
+            .store(in: &cancellable)
+    }
+    
     private func setContent(with details: MovieDetailsDataModel? = nil) {
         guard let details = details else {
             return
         }
+        
         // let url = "https://image.tmdb.org/t/p/w500/zGLHX92Gk96O1DJvLil7ObJTbaL.jpg"
         backDropImageView.setImage(with: details.backDropImage, placeholder: nil, cacheMethod: .memory)
         
@@ -275,9 +300,12 @@ class MovieDetailsViewController: BaseViewController {
         directorView.setContent(director: details.director)
         
         similarMoviesView.similarMovies = details.similar
+        
+        favoriteButton.isSelected = viewModel.isFavorite
     }
     
-    @objc
+    // MARK: Action Handlers
+    
     func dismissViewController() {
         self.baseNavigationController?.popViewController(animated: true)
     }

@@ -13,6 +13,10 @@ class MovieDetailsViewModel {
     // MARK: Service
     
     private var service: MovieDetailsServiceProtocol
+    
+    // MARK: Favorite Property
+    
+    private var favorite: Favorite?
 
     // MARK: Movie Publisher
     
@@ -71,6 +75,8 @@ class MovieDetailsViewModel {
                                               cast: cast,
                                               director: director)
         
+        favorite = Favorite(id: details.id, title: details.title)
+        
         movieDetailsSubject.send(dataModel)
     }
     
@@ -97,4 +103,25 @@ class MovieDetailsViewModel {
         return similar ?? []
     }
 
+    func addToFavorites() {
+        guard let favorite = favorite else {
+            return
+        }
+
+        DataContext.favorites.append(favorite)
+    }
+    
+    func removeFromFavorites() {
+        guard let favorite = favorite else {
+            return
+        }
+        DataContext.favorites.removeAll(where: { $0.id == favorite.id })
+    }
+    
+    var isFavorite: Bool {
+        guard let favorite = favorite else {
+            return false
+        }
+       return DataContext.favorites.contains(where: { $0.id == favorite.id })
+    }
 }

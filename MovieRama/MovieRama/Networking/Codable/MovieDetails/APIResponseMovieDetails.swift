@@ -12,7 +12,7 @@ struct APIReponseMovieDetails: Codable {
     let budget: Int
     let genres: [APIReponseGenre]
     let homepage: String?
-    let id: Int
+    let movieId: Int
     let imdbID, originalLanguage, originalTitle, overview: String?
     let popularity: Double
     let posterPath: String?
@@ -36,7 +36,8 @@ struct APIReponseMovieDetails: Codable {
         case adult
         case backdropPath = "backdrop_path"
         
-        case budget, genres, homepage, id
+        case budget, genres, homepage
+        case movieId = "id"
         case imdbID = "imdb_id"
         case originalLanguage = "original_language"
         case originalTitle = "original_title"
@@ -56,6 +57,10 @@ struct APIReponseMovieDetails: Codable {
         // case spokenLanguages = "spoken_languages"
         // case productionCompanies = "production_companies"
         // case productionCountries = "production_countries"
+    }
+    
+    var id: String {
+        return String(movieId)
     }
     
     var posterImageUrl: String {
