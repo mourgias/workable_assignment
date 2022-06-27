@@ -14,4 +14,21 @@ struct MovieDetailsDataModel {
     let posterImage: String
     let duration: String
     let releaseDate: String
+    
+    let reviews: [ReviewsDataModel]
+    let similar: [SimilarDataModel]
+}
+
+struct ReviewsDataModel {
+    
+    let author: String
+    let content: String
+    let createdAt: String
+    let image: String
+}
+
+struct SimilarDataModel {
+    
+    let posterImage: String
+    let title: String
 }

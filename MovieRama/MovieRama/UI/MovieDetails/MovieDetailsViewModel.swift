@@ -9,13 +9,20 @@ import Combine
 class MovieDetailsViewModel {
     
     private var cancellable = Cancellable()
+    
+    // MARK: Service
+    
     private var service: MovieDetailsServiceProtocol
 
+    // MARK: Movie Publisher
+    
     var movieDetails: AnyPublisher<MovieDetailsDataModel, NetworkError> {
         return movieDetailsSubject.eraseToAnyPublisher()
     }
     
     private var movieDetailsSubject = PassthroughSubject<MovieDetailsDataModel, NetworkError>()
+    
+    // MARK: Init
     
     init(service: MovieDetailsServiceProtocol = MovieDetailsService()) {
         self.service = service
@@ -23,10 +30,11 @@ class MovieDetailsViewModel {
 
     func fetchDetails(id: String) {
         
-        service.fetchMovie(id: id).done { [weak self] response in
+        service.fetchMovie(id: id).done { [weak self] (details, reviews, similar) in
             guard let self = self else { return }
-            print(response)
-            self.buildDataModel(response)
+            //print(details, reviews, similar)
+            
+            self.buildDataModel(details, reviews, similar)
             
         } catchError: { error in
             if let error = error as? NetworkError {
@@ -35,7 +43,15 @@ class MovieDetailsViewModel {
         }.store(in: &cancellable)
     }
     
-    private func buildDataModel(_ details: APIReponseMovieDetails) {
+    // MARK: Build data model
+    
+    private func buildDataModel(_ details: APIReponseMovieDetails,
+                                _ reviews: APIResponseReviews?,
+                                _ similar:  APIReponseSimilarMovies?) {
+        
+        let reviews = buildReviews(reviews)
+        
+        let similar = buildSimilar(similar)
         
         let dataModel = MovieDetailsDataModel(backDropImage: details.backDropImageUrl,
                                               title: details.title,
@@ -43,9 +59,34 @@ class MovieDetailsViewModel {
                                               genre: details.genre,
                                               posterImage: details.posterImageUrl,
                                               duration: details.duration,
-                                              releaseDate: details.releaseDateFormatter)
+                                              releaseDate: details.releaseDateFormatter,
+                                              reviews: reviews,
+                                              similar: similar)
         
         movieDetailsSubject.send(dataModel)
+    }
+    
+    private func buildReviews(_ reviews: APIResponseReviews?) -> [ReviewsDataModel] {
+        
+        let reviews = reviews?.authors.prefix(2).compactMap { review in
+            
+            ReviewsDataModel(author: review.author,
+                             content: review.content,
+                             createdAt: review.createdAt,
+                             image: review.authorDetails.avatarPath ?? "")
+        }
+        
+        return reviews ?? []
+    }
+    
+    private func buildSimilar(_ similar:  APIReponseSimilarMovies?) -> [SimilarDataModel] {
+        
+        let similar = similar?.results.compactMap { movie in
+            
+            SimilarDataModel(posterImage: movie.posterPath ?? "", title: movie.title)
+        }
+        
+        return similar ?? []
     }
 
 }

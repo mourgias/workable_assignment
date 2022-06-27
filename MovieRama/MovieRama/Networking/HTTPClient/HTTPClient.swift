@@ -21,11 +21,15 @@ class HTTPClient {
     // ----- Second approach
     
     func getRequest<T: Decodable>(_ router: Router) -> AnyPublisher<T, NetworkError> {
-        
         let fullURL = baseURL + router.urlString + apiKey + language
         
         let session = URLSessionNetwork(url: fullURL)
         return session.performRequest()
+        
+        // Wait for subscription
+       // return Deferred<AnyPublisher<T, NetworkError>> {
+       // }
+       // .eraseToAnyPublisher()
     }
     
 //    func getRequest<T: Decodable>(_ router: Router) -> Future<T, NetworkError> {
