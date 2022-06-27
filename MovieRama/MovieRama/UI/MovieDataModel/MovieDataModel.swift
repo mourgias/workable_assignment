@@ -13,4 +13,8 @@ struct MovieDataModel {
     var voteAverageValue: Double
     let releaseDateFormatted: String
     let posterImageUrl: String
+    
+    var isFavorite: Bool {
+        DataContext.favorites.contains(where: { $0.id == id })
+    }
 }

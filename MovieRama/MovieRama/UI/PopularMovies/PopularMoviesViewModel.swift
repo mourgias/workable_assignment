@@ -103,9 +103,7 @@ class PopularMoviesViewModel {
         
         let model = response.compactMap { item -> MovieDataModel in
             
-            let id = String(item.id)
-            
-            return MovieDataModel(id: id,
+            return MovieDataModel(id: item.id,
                                   title: item.title,
                                   voteAveragePercent: item.voteAveragePercent,
                                   voteAverageValue: item.voteAverage,
@@ -116,6 +114,17 @@ class PopularMoviesViewModel {
         cachedMovies.append(contentsOf: model)
         moviesDataModel = cachedMovies
         reloadDataSubject.send()
+    }
+    
+    func addToFavorites(id: String) {
+        if let movie = moviesDataModel.first(where: { $0.id == id }) {
+            let favorite = Favorite(id: movie.id, title: movie.title)
+            DataContext.addFavorite(with: favorite)
+        }
+    }
+    
+    func removeFromFavorites(id: String) {
+        DataContext.removeFavorite(with: id)
     }
 }
 

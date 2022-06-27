@@ -108,14 +108,15 @@ class MovieDetailsViewModel {
             return
         }
 
-        DataContext.favorites.append(favorite)
+        DataContext.addFavorite(with: favorite)
     }
     
     func removeFromFavorites() {
         guard let favorite = favorite else {
             return
         }
-        DataContext.favorites.removeAll(where: { $0.id == favorite.id })
+        
+        DataContext.removeFavorite(with: favorite.id)
     }
     
     var isFavorite: Bool {

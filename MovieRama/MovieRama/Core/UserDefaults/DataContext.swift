@@ -32,6 +32,24 @@ class DataContext {
             UserDefaults.standard.set(data, forKey: ContextKey.favorites.key)
         }
     }
+    
+    static func removeFavorite(with id: String) {
+        var favorites = favorites
+        favorites.removeAll(where: { $0.id == id })
+        self.favorites = favorites
+    }
+    
+    static func addFavorite(with favorite: Favorite) {
+        var favorites = favorites
+        favorites.append(favorite)
+        self.favorites = favorites
+    }
+    
+//    static func clearFavorites() {
+//        var favorites = favorites
+//        favorites.removeAll()
+//        self.favorites = favorites
+//    }
 }
 
 struct Favorite: Codable {

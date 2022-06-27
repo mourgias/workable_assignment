@@ -38,6 +38,17 @@ class PopularMoviesViewController: BaseViewController {
         return tableView
     }()
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Detect if the child VC dismissed (pop) from navigation stack
+//        if !isBeingPresented && !isMovingToParent {
+//
+//        }
+        
+        self.tableView.reloadData()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -127,6 +138,22 @@ extension PopularMoviesViewController: UITableViewDelegate, UITableViewDataSourc
         case let (cell as MovieTableViewCell):
             
             cell.setContent(movie: movie)
+            
+            cell.favoriteButton
+                .publisher(for: .touchUpInside)
+                .sink { [weak self] _ in
+                    guard let self = self else { return }
+                    
+                    cell.favoriteButton.isSelected.toggle()
+                    
+                    if cell.favoriteButton.isSelected {
+                        self.viewModel.addToFavorites(id: movie.id)
+                    } else {
+                        self.viewModel.removeFromFavorites(id: movie.id)
+                    }
+                }
+                .store(in: &cell.cancellable)
+            
         default:
             break
         }

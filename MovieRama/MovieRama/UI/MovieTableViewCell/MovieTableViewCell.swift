@@ -7,6 +7,8 @@ import UIKit
 
 class MovieTableViewCell: UITableViewCell {
     
+    var cancellable = Cancellable()
+    
     // MARK: UI Properties
     
     private let wrapperView: UIView = {
@@ -38,6 +40,14 @@ class MovieTableViewCell: UITableViewCell {
     
     private let releaseDateLabel = UILabel()
     
+    private(set) var favoriteButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(systemName: "heart"), for: .normal)
+        button.setImage(UIImage(systemName: "heart.fill"), for: .selected)
+        button.tintColor = .white
+        return button
+    }()
+    
     // MARK: Init
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -51,6 +61,13 @@ class MovieTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // reuse strong references
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        cancellable.removeAll()
+    }
+    
     // MARK: Setup View
     
     func setupView() {
@@ -60,7 +77,8 @@ class MovieTableViewCell: UITableViewCell {
         
         contentView.addSubview(wrapperView)
         wrapperView.addSubviews([titleLabel, posterImageView,
-                                 calendarImageView, releaseDateLabel])
+                                 calendarImageView, releaseDateLabel,
+                                 favoriteButton])
     }
     
     // MARK: Setup Layout
@@ -97,7 +115,11 @@ class MovieTableViewCell: UITableViewCell {
             .leading(5, .to(calendarImageView, .trailing)),
             .centerY(0, .to(calendarImageView))
         )
-
+        
+        favoriteButton.layout(
+            .leading(0, .to(titleLabel, .leading)),
+            .top(10, .to(releaseDateLabel, .bottom))
+        )
     }
  
     // MARK: Set Content
@@ -111,5 +133,7 @@ class MovieTableViewCell: UITableViewCell {
         releaseDateLabel.attributedText = movie.releaseDateFormatted.style(font: .semiBold, size: 13)
 
         posterImageView.setImage(with: movie.posterImageUrl, placeholder: UIImage(named: "poster_placeholder"))
+        
+        favoriteButton.isSelected = movie.isFavorite
     }
 }
