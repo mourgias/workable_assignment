@@ -30,7 +30,7 @@ class RootViewController: UIViewController {
         
         let home = BaseNavigationController(rootViewController: PopularMoviesViewController())
         
-        let favorites = UIViewController()
+        let favorites = BaseNavigationController(rootViewController: FavoritesViewController())
         
         home.tabBarItem = UITabBarItem(title: "Home", image: UIImage(systemName: "film"), tag: 0)
         favorites.tabBarItem = UITabBarItem(title: "Favorites", image: UIImage(systemName: "heart"), tag: 1)

@@ -3,21 +3,20 @@
 //  All rights reserved.
 //
 
-import Foundation
 import UIKit
 
-class PopularMoviesViewController: BaseViewController {
+class FavoritesViewController: BaseViewController {
     
     // MARK: Properties
     
     private var cancellable = Cancellable()
     
-    private var viewModel = PopularMoviesViewModel()
+    private var viewModel = FavoritesViewModel()
     
     // MARK: UI Properties
     
-    private lazy var tableView: BaseTableView = {
-        let tableView = BaseTableView(frame: .zero, style: .plain)
+    private lazy var tableView: UITableView = {
+        let tableView = UITableView(frame: .zero, style: .plain)
         
         tableView.separatorColor = .clear
         tableView.separatorStyle = .none
@@ -30,8 +29,6 @@ class PopularMoviesViewController: BaseViewController {
         tableView.register(MovieTableViewCell.self,
                            forCellReuseIdentifier: MovieTableViewCell.id)
         
-        tableView.showRefreshControl = true
-        
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -40,13 +37,7 @@ class PopularMoviesViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        // Detect if the child VC dismissed (pop) from navigation stack
-//        if !isBeingPresented && !isMovingToParent {
-//
-//        }
-        
-        self.tableView.reloadData()
+        viewModel.fetchFavorites()
     }
     
     // MARK: ViewDidLoad
@@ -54,10 +45,8 @@ class PopularMoviesViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        addNavigationBar(title: "Popular")
+        addNavigationBar(title: "Favorites")
 
-        viewModel.fetchPopular()
-        
         setupView()
         bindViewModel()
     }
@@ -74,8 +63,6 @@ class PopularMoviesViewController: BaseViewController {
             .trailing(0),
             .bottom(0)
         )
-        
-        tableView.addRefreshTarget(self, action: #selector(refreshContent))
     }
     
     // MARK: Bind View Model
@@ -84,50 +71,18 @@ class PopularMoviesViewController: BaseViewController {
         
         viewModel.reloadData.done { [weak self] in
             guard let self = self else { return }
-            
-            self.tableView.endRefreshingControl()
-            self.tableView.hideBottomIndicator()
             self.tableView.reloadData()
         }
         .store(in: &cancellable)
-    }
-    
-    @objc
-    func refreshContent() {
-        self.tableView.beginRefreshingControl()
-        
-        // Perform some delay
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) { [weak self] in
-            guard let self = self else { return }
-            self.viewModel.refreshContent()
-        }
     }
 }
 
 // MARK: UITableViewDelegate - UITableViewDataSource
 
-extension PopularMoviesViewController: UITableViewDelegate, UITableViewDataSource {
+extension FavoritesViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.numberOfRows()
-    }
-    
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        
-        let lastSectionIndex = tableView.numberOfSections - 1
-        let lastRowIndex = tableView.numberOfRows(inSection: lastSectionIndex) - 1
-        
-        if indexPath.section == lastSectionIndex && indexPath.row == lastRowIndex {
-            // print("will request new data 🔃")
-            
-            // check if reach the last page
-            if !viewModel.isReachLastPage {
-                self.viewModel.fetchPopular(isFromScroll: true)
-                tableView.showBottomIndicator()
-            } else {
-                tableView.hideBottomIndicator()
-            }
-        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -155,7 +110,14 @@ extension PopularMoviesViewController: UITableViewDelegate, UITableViewDataSourc
                     if cell.favoriteButton.isSelected {
                         self.viewModel.addToFavorites(id: movie.id)
                     } else {
-                        self.viewModel.removeFromFavorites(id: movie.id)
+                        self.viewModel.removeFromFavorites(at: indexPath.row)
+                        
+                        self.tableView.deleteRows(at: [indexPath], with: .fade)
+                        
+                        // May be need another workaround
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                            self.tableView.reloadData()
+                        }
                     }
                 }
                 .store(in: &cell.cancellable)

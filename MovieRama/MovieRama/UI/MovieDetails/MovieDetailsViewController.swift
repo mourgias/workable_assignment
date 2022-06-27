@@ -301,7 +301,7 @@ class MovieDetailsViewController: BaseViewController {
         
         similarMoviesView.similarMovies = details.similar
         
-        favoriteButton.isSelected = viewModel.isFavorite
+        favoriteButton.isSelected = details.isFavorite
     }
     
     // MARK: Action Handlers

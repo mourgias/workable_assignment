@@ -7,6 +7,7 @@ import Foundation
 
 struct MovieDetailsDataModel {
     
+    let id: String
     let backDropImage: String
     let title: String
     let summary: String?
@@ -19,6 +20,10 @@ struct MovieDetailsDataModel {
     let similar: [SimilarDataModel]
     let cast: [MovieCharacter]
     let director: APIReponseCast?
+    
+    var isFavorite: Bool {
+        DataContext.favorites.contains(where: { $0.id == id })
+    }
 }
 
 struct ReviewsDataModel {

@@ -16,7 +16,7 @@ class MovieDetailsViewModel {
     
     // MARK: Favorite Property
     
-    private var favorite: Favorite?
+    private var favorite: MovieDataModel?
 
     // MARK: Movie Publisher
     
@@ -63,7 +63,8 @@ class MovieDetailsViewModel {
         
         let director = details.credits.director
         
-        let dataModel = MovieDetailsDataModel(backDropImage: details.backDropImageUrl,
+        let dataModel = MovieDetailsDataModel(id: details.id,
+                                              backDropImage: details.backDropImageUrl,
                                               title: details.title,
                                               summary: details.overview,
                                               genre: details.genre,
@@ -75,7 +76,7 @@ class MovieDetailsViewModel {
                                               cast: cast,
                                               director: director)
         
-        favorite = Favorite(id: details.id, title: details.title)
+        buildFavoriteItem(details)
         
         movieDetailsSubject.send(dataModel)
     }
@@ -102,6 +103,16 @@ class MovieDetailsViewModel {
         
         return similar ?? []
     }
+    
+    private func buildFavoriteItem(_ details: APIReponseMovieDetails) {
+        
+        favorite = MovieDataModel(id: details.id,
+                                  title: details.title,
+                                  voteAveragePercent: details.voteAveragePercent,
+                                  voteAverageValue: details.voteAverage ?? 0,
+                                  releaseDateFormatted: details.releaseDateFormatter,
+                                  posterImageUrl: details.posterImageUrl)
+    }
 
     func addToFavorites() {
         guard let favorite = favorite else {
@@ -117,12 +128,5 @@ class MovieDetailsViewModel {
         }
         
         DataContext.removeFavorite(with: favorite.id)
-    }
-    
-    var isFavorite: Bool {
-        guard let favorite = favorite else {
-            return false
-        }
-       return DataContext.favorites.contains(where: { $0.id == favorite.id })
     }
 }

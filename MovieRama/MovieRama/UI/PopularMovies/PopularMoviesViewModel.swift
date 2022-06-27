@@ -118,8 +118,7 @@ class PopularMoviesViewModel {
     
     func addToFavorites(id: String) {
         if let movie = moviesDataModel.first(where: { $0.id == id }) {
-            let favorite = Favorite(id: movie.id, title: movie.title)
-            DataContext.addFavorite(with: favorite)
+            DataContext.addFavorite(with: movie)
         }
     }
     

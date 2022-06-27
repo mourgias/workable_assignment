@@ -15,12 +15,12 @@ class DataContext {
         }
     }
     
-    static var favorites: [Favorite] {
+    static var favorites: [MovieDataModel] {
         
         get {
             if let data = UserDefaults.standard.value(forKey: ContextKey.favorites.key) as? Data {
                 
-                if let value = try? JSONDecoder().decode([Favorite].self, from: data) {
+                if let value = try? JSONDecoder().decode([MovieDataModel].self, from: data) {
                     return value
                 }
             }
@@ -39,7 +39,7 @@ class DataContext {
         self.favorites = favorites
     }
     
-    static func addFavorite(with favorite: Favorite) {
+    static func addFavorite(with favorite: MovieDataModel) {
         var favorites = favorites
         favorites.append(favorite)
         self.favorites = favorites

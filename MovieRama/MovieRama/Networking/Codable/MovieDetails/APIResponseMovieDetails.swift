@@ -87,6 +87,10 @@ struct APIReponseMovieDetails: Codable {
     var releaseDateFormatter: String {
         return releaseDate.releaseDateFormatter
     }
+    
+    var voteAveragePercent: String {
+        return (((voteAverage ?? 0) / 10) as NSNumber).toPercentage()
+    }
 }
 
 struct APIReponseGenre: Codable {
