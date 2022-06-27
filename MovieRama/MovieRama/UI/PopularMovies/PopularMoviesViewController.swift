@@ -84,6 +84,7 @@ class PopularMoviesViewController: BaseViewController {
             guard let self = self else { return }
             
             self.tableView.endRefreshingControl()
+            self.tableView.hideBottomIndicator()
             self.tableView.reloadData()
         }
         .store(in: &cancellable)
@@ -120,6 +121,9 @@ extension PopularMoviesViewController: UITableViewDelegate, UITableViewDataSourc
             // check if reach the last page
             if !viewModel.isReachLastPage {
                 self.viewModel.fetchPopular(isFromScroll: true)
+                tableView.showBottomIndicator()
+            } else {
+                tableView.hideBottomIndicator()
             }
         }
     }

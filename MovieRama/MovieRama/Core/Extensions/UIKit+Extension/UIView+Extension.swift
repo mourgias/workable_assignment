@@ -51,3 +51,46 @@ extension UIView {
         layer.cornerRadius = radius
     }
 }
+
+private var kIndicatorView = "indicatorView"
+
+extension UITableView {
+    
+    private var bottomIndicatorView : UIActivityIndicatorView? {
+        get {
+            return objc_getAssociatedObject(self, &kIndicatorView) as? UIActivityIndicatorView
+        }
+        set {
+            objc_setAssociatedObject(self, &kIndicatorView, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        }
+    }
+    
+    private func prepareIndicator() {
+        bottomIndicatorView = UIActivityIndicatorView(style: .medium)
+        bottomIndicatorView?.color = .white
+        
+        bottomIndicatorView?.startAnimating()
+        bottomIndicatorView?.frame = CGRect(x: 0, y: 0,
+                                            width: bounds.width, height: 44)
+        
+        tableFooterView = bottomIndicatorView
+        tableFooterView?.isHidden = false
+    }
+    
+    func showBottomIndicator() {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            self.prepareIndicator()
+        }
+    }
+    
+    func hideBottomIndicator() {
+        
+        if bottomIndicatorView?.isAnimating ?? false {
+            bottomIndicatorView?.stopAnimating()
+        }
+        tableFooterView?.isHidden = true
+        tableFooterView = nil
+        bottomIndicatorView = nil
+    }
+}
