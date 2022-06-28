@@ -41,6 +41,7 @@ struct SimilarDataModel {
 }
 
 struct MovieCharacter {
+    
     let name: String
     let image: String?
 }

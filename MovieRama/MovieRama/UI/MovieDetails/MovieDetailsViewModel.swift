@@ -156,7 +156,7 @@ class MovieDetailsViewModel {
             ReviewsDataModel(author: review.author,
                              content: review.content,
                              createdAt: review.createdAt,
-                             image: review.authorDetails.avatarPath ?? "")
+                             image: review.authorDetails.avatar ?? "")
         }
         
         return reviews ?? []

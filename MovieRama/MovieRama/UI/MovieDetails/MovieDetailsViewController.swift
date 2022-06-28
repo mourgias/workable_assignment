@@ -112,6 +112,8 @@ class MovieDetailsViewController: BaseViewController {
         return stackView
     }()
     
+    private let reviews = ReviewsCollectionView()
+    
     // MARK: ViewDidLoad
     
     override func viewDidLoad() {
@@ -141,7 +143,7 @@ class MovieDetailsViewController: BaseViewController {
         bottomContentView.addSubviews([posterImageView, favoriteButton,
                                        favoritesLabel, overviewLabel,
                                        summaryLabel, verticalStackView,
-                                       similarMoviesView])
+                                       similarMoviesView, reviews])
         
         verticalStackView.addArrangedSubviews([castView, directorView])
         
@@ -246,8 +248,14 @@ class MovieDetailsViewController: BaseViewController {
         similarMoviesView.layout(
             .top(20, .to(verticalStackView, .bottom)),
             .leading(0),
-            .trailing(0),
-            .bottom(30)
+            .trailing(0)
+        )
+        
+        reviews.layout(
+            .top(20, .to(similarMoviesView, .bottom)),
+            .bottom(30),
+            .leading(0),
+            .trailing(0)
         )
     }
 
@@ -312,6 +320,8 @@ class MovieDetailsViewController: BaseViewController {
         }
         
         similarMoviesView.similarMovies = details.similar
+        
+        reviews.movieReviews = details.reviews
         
         favoriteButton.isSelected = details.isFavorite
     }
