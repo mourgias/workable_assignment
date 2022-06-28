@@ -16,7 +16,7 @@
 		CD23A9D328634473001024EE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD23A9D128634473001024EE /* Main.storyboard */; };
 		CD23A9D528634474001024EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD23A9D428634474001024EE /* Assets.xcassets */; };
 		CD23A9D828634474001024EE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD23A9D628634474001024EE /* LaunchScreen.storyboard */; };
-		CD23A9E328634474001024EE /* MovieRamaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD23A9E228634474001024EE /* MovieRamaTests.swift */; };
+		CD23A9E328634474001024EE /* PopularMoviesServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD23A9E228634474001024EE /* PopularMoviesServiceTests.swift */; };
 		CD23A9ED28634474001024EE /* MovieRamaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD23A9EC28634474001024EE /* MovieRamaUITests.swift */; };
 		CD23A9EF28634474001024EE /* MovieRamaUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD23A9EE28634474001024EE /* MovieRamaUITestsLaunchTests.swift */; };
 		CD23A9FD286347B4001024EE /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = CD23A9FC286347B4001024EE /* .swiftlint.yml */; };
@@ -39,6 +39,7 @@
 		CD337335286B107100CFA0EA /* APIResponseTVDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD337334286B107100CFA0EA /* APIResponseTVDetails.swift */; };
 		CD337338286B3A1700CFA0EA /* ReviewsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD337337286B3A1700CFA0EA /* ReviewsCollectionView.swift */; };
 		CD33733B286B3A4500CFA0EA /* ReviewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD33733A286B3A4500CFA0EA /* ReviewCollectionViewCell.swift */; };
+		CD33733D286B625900CFA0EA /* MovieDetailsServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD33733C286B625900CFA0EA /* MovieDetailsServiceTests.swift */; };
 		CD4E747628645C3F0054220B /* Layout+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4E747528645C3F0054220B /* Layout+View.swift */; };
 		CD4E747B28645D930054220B /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4E747A28645D930054220B /* UIView+Extension.swift */; };
 		CD4E747E286460D40054220B /* MovieDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4E747D286460D40054220B /* MovieDataModel.swift */; };
@@ -104,7 +105,7 @@
 		CD23A9D728634474001024EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CD23A9D928634474001024EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CD23A9DE28634474001024EE /* MovieRamaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MovieRamaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		CD23A9E228634474001024EE /* MovieRamaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieRamaTests.swift; sourceTree = "<group>"; };
+		CD23A9E228634474001024EE /* PopularMoviesServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularMoviesServiceTests.swift; sourceTree = "<group>"; };
 		CD23A9E828634474001024EE /* MovieRamaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MovieRamaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD23A9EC28634474001024EE /* MovieRamaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieRamaUITests.swift; sourceTree = "<group>"; };
 		CD23A9EE28634474001024EE /* MovieRamaUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieRamaUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -128,6 +129,7 @@
 		CD337334286B107100CFA0EA /* APIResponseTVDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResponseTVDetails.swift; sourceTree = "<group>"; };
 		CD337337286B3A1700CFA0EA /* ReviewsCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsCollectionView.swift; sourceTree = "<group>"; };
 		CD33733A286B3A4500CFA0EA /* ReviewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewCollectionViewCell.swift; sourceTree = "<group>"; };
+		CD33733C286B625900CFA0EA /* MovieDetailsServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsServiceTests.swift; sourceTree = "<group>"; };
 		CD4E747528645C3F0054220B /* Layout+View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Layout+View.swift"; sourceTree = "<group>"; };
 		CD4E747A28645D930054220B /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		CD4E747D286460D40054220B /* MovieDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDataModel.swift; sourceTree = "<group>"; };
@@ -233,7 +235,8 @@
 		CD23A9E128634474001024EE /* MovieRamaTests */ = {
 			isa = PBXGroup;
 			children = (
-				CD23A9E228634474001024EE /* MovieRamaTests.swift */,
+				CD23A9E228634474001024EE /* PopularMoviesServiceTests.swift */,
+				CD33733C286B625900CFA0EA /* MovieDetailsServiceTests.swift */,
 			);
 			path = MovieRamaTests;
 			sourceTree = "<group>";
@@ -936,7 +939,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CD23A9E328634474001024EE /* MovieRamaTests.swift in Sources */,
+				CD23A9E328634474001024EE /* PopularMoviesServiceTests.swift in Sources */,
+				CD33733D286B625900CFA0EA /* MovieDetailsServiceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
