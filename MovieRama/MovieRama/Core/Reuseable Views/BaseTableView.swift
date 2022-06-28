@@ -19,6 +19,8 @@ class BaseTableView: UITableView {
         didSet {
             if showRefreshControl {
                 setupRefreshControl()
+            } else {
+                backgroundView = nil
             }
         }
     }

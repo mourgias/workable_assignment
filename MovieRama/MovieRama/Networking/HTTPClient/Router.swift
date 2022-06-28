@@ -7,7 +7,7 @@ import Foundation
 
 enum Router {
     
-    //case search(String)
+    case search(text: String, page: Int)
     
     case popularMovies(page: Int)
     
@@ -17,6 +17,9 @@ enum Router {
     
     var urlString: String {
         switch self {
+            
+        case let .search(char, page):
+            return "search/multi?query=\(char)&page=\(page)"
             
         case let .popularMovies(page):
             return "movie/popular?page=\(page)"
