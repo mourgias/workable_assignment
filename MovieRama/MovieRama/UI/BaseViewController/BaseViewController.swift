@@ -15,6 +15,8 @@ class BaseViewController: UIViewController {
     
     private var titleLabel = UILabel()
     
+    private(set) var searchView = SearchView()
+    
     private(set) var leftNavBarButton: UIButton = {
         let button = UIButton(type: .system)
         return button
@@ -23,9 +25,15 @@ class BaseViewController: UIViewController {
     var navBarHeight: CGFloat {
         get {
             let window = UIApplication.shared.windows.filter { $0.isKeyWindow }.first
-            return 60.0 + (window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0)
+            return 60.0 + (window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0) + searchFieldHeight
         }
     }
+    
+    private var searchFieldHeight: CGFloat {
+        return isSearchBarActive ? 30 : 0 // 25
+    }
+    
+    private var isSearchBarActive: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +44,9 @@ class BaseViewController: UIViewController {
         view.backgroundColor = .appDarkGray
     }
     
-    func addNavigationBar(title: String? = nil, leftButton: ButtonType? = nil, hideNavBackground: Bool = false) {
+    func addNavigationBar(title: String? = nil, leftButton: ButtonType? = nil, hideNavBackground: Bool = false, hasSearch: Bool = false) {
+        
+        isSearchBarActive = hasSearch
         
         if !hideNavBackground {
             view.addSubview(navBarBackgroundView)
@@ -47,23 +57,36 @@ class BaseViewController: UIViewController {
                 .height(navBarHeight)
             )
             
-            if let title = title {
-                navBarBackgroundView.addSubview(titleLabel)
+            if hasSearch {
                 
-                titleLabel.layout(
-                    .leading(25),
-                    .top(0, .to(view.safeAreaLayoutGuide, .top))
+                navBarBackgroundView.addSubview(searchView)
+                
+                searchView.layout(
+                    .leading(0),
+                    .trailing(0),
+                    .bottom(7)
                 )
-                
-                titleLabel.attributedText = title.style(font: .semiBold, size: 25)
             }
+        }
+        
+        if let title = title {
+            navBarBackgroundView.addSubview(titleLabel)
+            
+            titleLabel.layout(
+                .leading(25),
+                .top(0, .to(view.safeAreaLayoutGuide, .top))
+            )
+            
+            titleLabel.attributedText = title.style(font: .semiBold, size: 25)
         }
         
         navBarBackgroundView.backgroundColor = .appLightGray
         
         switch leftButton {
+            
         case .back:
             setupBackButton()
+            
         case .none:
             break
         }

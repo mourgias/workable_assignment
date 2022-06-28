@@ -31,6 +31,7 @@ class PopularMoviesViewController: BaseViewController {
                            forCellReuseIdentifier: MovieTableViewCell.id)
         
         tableView.showRefreshControl = true
+        tableView.keyboardDismissMode = .onDrag
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -54,7 +55,7 @@ class PopularMoviesViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        addNavigationBar(title: "Popular")
+        addNavigationBar(title: "Popular", hasSearch: true)
 
         viewModel.fetchPopular()
         
@@ -90,6 +91,15 @@ class PopularMoviesViewController: BaseViewController {
             self.tableView.reloadData()
         }
         .store(in: &cancellable)
+        
+        searchView.searchFieldValue.sink { [weak self] text in
+            guard let self = self else { return }
+            self.viewModel.searchMovie(with: text)
+            
+            // Hide refresh during searching
+            self.tableView.showRefreshControl = text == nil
+        }
+        .store(in: &cancellable)
     }
     
     @objc
@@ -122,7 +132,13 @@ extension PopularMoviesViewController: UITableViewDelegate, UITableViewDataSourc
             
             // check if reach the last page
             if !viewModel.isReachLastPage {
-                self.viewModel.fetchPopular(isFromScroll: true)
+                
+                if viewModel.isSearching {
+                    viewModel.fetchSearchResult(isFromScroll: true)
+                } else {
+                    viewModel.fetchPopular(isFromScroll: true)
+                }
+                
                 tableView.showBottomIndicator()
             } else {
                 tableView.hideBottomIndicator()

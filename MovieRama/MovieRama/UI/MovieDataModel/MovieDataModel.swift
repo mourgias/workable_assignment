@@ -14,6 +14,8 @@ struct MovieDataModel: Codable {
     let releaseDateFormatted: String
     let posterImageUrl: String
     
+    var mediaType: MediaType? = nil
+    
     var isFavorite: Bool {
         DataContext.favorites.contains(where: { $0.id == id })
     }
