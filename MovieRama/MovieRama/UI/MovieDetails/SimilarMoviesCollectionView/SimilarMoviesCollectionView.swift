@@ -21,7 +21,7 @@ class SimilarMoviesCollectionView: UIView {
     
     private let recommendationLabel: UILabel = {
         let label = UILabel()
-        label.attributedText = "Recommendations".style(font: .semiBold, size: 16)
+        label.attributedText = "Recommendations".style(font: .semiBold, size: 18)
         return label
     }()
     
@@ -72,7 +72,7 @@ class SimilarMoviesCollectionView: UIView {
         )
         
         collectionView.layout(
-            .top(10, .to(recommendationLabel, .bottom)),
+            .top(15, .to(recommendationLabel, .bottom)),
             .leading(0),
             .trailing(0),
             .bottom(10),

@@ -13,7 +13,7 @@ class DirectorView: UIView {
     
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.attributedText = "Director".style(font: .semiBold, size: 16)
+        label.attributedText = "Director".style(font: .semiBold, size: 18)
         return label
     }()
     

@@ -8,7 +8,7 @@ import UIKit
 class MovieDetailsViewController: BaseViewController {
     
     struct Defines {
-        static let leadingAlignment: CGFloat = 30
+        static let leadingAlignment: CGFloat = 40
     }
     
     private var cancellable = Cancellable()
@@ -83,7 +83,7 @@ class MovieDetailsViewController: BaseViewController {
     
     private let overviewLabel: UILabel = {
         let label = UILabel()
-        label.attributedText = "Overview".style(font: .semiBold, size: 16)
+        label.attributedText = "Overview".style(font: .semiBold, size: 18)
         return label
     }()
     
@@ -103,7 +103,9 @@ class MovieDetailsViewController: BaseViewController {
     
     private let similarMoviesView = SimilarMoviesCollectionView()
     
-    private let verticalStackView: UIStackView = {
+    private let reviews = ReviewsCollectionView()
+    
+    private let upperVerticalStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.spacing = 28
         // stackView.alignment = UIStackView.Alignment.fill
@@ -112,7 +114,14 @@ class MovieDetailsViewController: BaseViewController {
         return stackView
     }()
     
-    private let reviews = ReviewsCollectionView()
+    private let lowerVerticalStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.spacing = 28
+        // stackView.alignment = UIStackView.Alignment.fill
+        stackView.axis = .vertical
+        // stackView.distribution = UIStackView.Distribution.
+        return stackView
+    }()
     
     // MARK: ViewDidLoad
     
@@ -142,10 +151,11 @@ class MovieDetailsViewController: BaseViewController {
         
         bottomContentView.addSubviews([posterImageView, favoriteButton,
                                        favoritesLabel, overviewLabel,
-                                       summaryLabel, verticalStackView,
-                                       similarMoviesView, reviews])
+                                       summaryLabel, upperVerticalStackView,
+                                    lowerVerticalStackView])
         
-        verticalStackView.addArrangedSubviews([castView, directorView])
+        upperVerticalStackView.addArrangedSubviews([castView, directorView])
+        lowerVerticalStackView.addArrangedSubviews([similarMoviesView, reviews])
         
         addNavigationBar(leftButton: .back, hideNavBackground: true)
     }
@@ -239,23 +249,17 @@ class MovieDetailsViewController: BaseViewController {
             .trailing(30)
         )
         
-        verticalStackView.layout(
-            .leading(0),
+        upperVerticalStackView.layout(
+            .leading(Defines.leadingAlignment - 30),
             .trailing(0),
-            .top(20, .to(summaryLabel, .bottom))
+            .top(27, .to(summaryLabel, .bottom))
         )
         
-        similarMoviesView.layout(
-            .top(20, .to(verticalStackView, .bottom)),
-            .leading(0),
-            .trailing(0)
-        )
-        
-        reviews.layout(
-            .top(20, .to(similarMoviesView, .bottom)),
-            .bottom(30),
-            .leading(0),
-            .trailing(0)
+        lowerVerticalStackView.layout(
+            .top(45, .to(upperVerticalStackView, .bottom)),
+            .leading(Defines.leadingAlignment - 30),
+            .trailing(0),
+            .bottom(30)
         )
     }
 
@@ -308,7 +312,7 @@ class MovieDetailsViewController: BaseViewController {
         
         posterImageView.setImage(with: details.posterImage, cacheMethod: .memory)
         
-        summaryLabel.attributedText = details.summary?.style(font: .medium, size: 12)
+        summaryLabel.attributedText = details.summary?.style(font: .medium, size: 14, lineSpacing: 3)
         
         genreLabel.attributedText = details.genre.style(font: .medium, size: 14)
         
@@ -321,6 +325,7 @@ class MovieDetailsViewController: BaseViewController {
         
         similarMoviesView.similarMovies = details.similar
         
+        reviews.isHidden = details.reviews.isEmpty
         reviews.movieReviews = details.reviews
         
         favoriteButton.isSelected = details.isFavorite

@@ -54,7 +54,10 @@ class ReviewCollectionViewCell: UICollectionViewCell {
         wrapperView.addSubviews([avatarImageView, nameLabel, contentLabel])
         
         wrapperView.layout(
-            .edges(10)
+            .top(10),
+            .leading(10),
+            .trailing(10),
+            .bottom(10)
         )
         
         avatarImageView.layout(

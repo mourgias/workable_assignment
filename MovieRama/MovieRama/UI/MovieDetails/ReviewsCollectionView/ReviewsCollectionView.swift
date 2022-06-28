@@ -21,22 +21,22 @@ class ReviewsCollectionView: UIView {
     
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.attributedText = "Reviews".style(font: .semiBold, size: 16)
+        label.attributedText = "Reviews".style(font: .semiBold, size: 18)
         return label
     }()
     
     private(set) lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        layout.minimumLineSpacing = 5// CGFloat.greatestFiniteMagnitude // 30 // horizontal
-        layout.minimumInteritemSpacing = 10// CGFloat.greatestFiniteMagnitude // vertical
+        layout.minimumLineSpacing = 0// CGFloat.greatestFiniteMagnitude // 30 // horizontal
+        layout.minimumInteritemSpacing = 0// CGFloat.greatestFiniteMagnitude // vertical
         
        // layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
        // layout.itemSize = CGSize(width: 60, height: 60)// UICollectionViewFlowLayout.automaticSize
 //        layout.sectionInset = UIEdgeInsets(top: 0, left: 20, bottom: 60, right: 20)
         
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        cv.contentInset = UIEdgeInsets(top: 0, left: 17, bottom: 0, right: 17)
+        cv.contentInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
         
         cv.backgroundColor = .clear
         cv.showsHorizontalScrollIndicator = false
@@ -107,7 +107,7 @@ extension ReviewsCollectionView: UICollectionViewDataSource, UICollectionViewDel
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let width = UIScreen.main.bounds.width - 50
+        let width = UIScreen.main.bounds.width - 60
         let size = CGSize(width: width, height: 190)
         return size
     }

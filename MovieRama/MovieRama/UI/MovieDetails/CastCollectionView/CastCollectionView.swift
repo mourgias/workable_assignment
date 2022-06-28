@@ -21,7 +21,7 @@ class CastCollectionView: UIView {
     
     private let castLabel: UILabel = {
         let label = UILabel()
-        label.attributedText = "Cast".style(font: .semiBold, size: 16)
+        label.attributedText = "Cast".style(font: .semiBold, size: 18)
         return label
     }()
     
