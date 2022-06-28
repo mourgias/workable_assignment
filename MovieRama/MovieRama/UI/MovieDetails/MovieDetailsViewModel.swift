@@ -105,7 +105,8 @@ class MovieDetailsViewModel {
                                   voteAveragePercent: details.voteAveragePercent,
                                   voteAverageValue: details.voteAverage ?? 0,
                                   releaseDateFormatted: details.releaseDateFormatter,
-                                  posterImageUrl: details.posterImageUrl)
+                                  posterImageUrl: details.posterImageUrl,
+                                  mediaType: .movie)
         
         movieDetailsSubject.send(dataModel)
     }
@@ -144,7 +145,8 @@ class MovieDetailsViewModel {
                                   voteAveragePercent: details.voteAveragePercent,
                                   voteAverageValue: details.voteAverage,
                                   releaseDateFormatted: details.releaseDateFormatter,
-                                  posterImageUrl: details.posterImageUrl)
+                                  posterImageUrl: details.posterImageUrl,
+                                  mediaType: .tv)
         
         movieDetailsSubject.send(dataModel)
     }
