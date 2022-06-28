@@ -95,9 +95,22 @@ class MovieDetailsViewController: BaseViewController {
     
     private let castView = CastCollectionView()
     
-    private let directorView = DirectorView()
+    private let directorView: DirectorView = {
+        let view = DirectorView()
+        view.isHidden = true
+        return view
+    }()
     
     private let similarMoviesView = SimilarMoviesCollectionView()
+    
+    private let verticalStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.spacing = 28
+        // stackView.alignment = UIStackView.Alignment.fill
+        stackView.axis = .vertical
+        // stackView.distribution = UIStackView.Distribution.
+        return stackView
+    }()
     
     // MARK: ViewDidLoad
     
@@ -127,8 +140,10 @@ class MovieDetailsViewController: BaseViewController {
         
         bottomContentView.addSubviews([posterImageView, favoriteButton,
                                        favoritesLabel, overviewLabel,
-                                       summaryLabel, castView,
-                                       directorView, similarMoviesView])
+                                       summaryLabel, verticalStackView,
+                                       similarMoviesView])
+        
+        verticalStackView.addArrangedSubviews([castView, directorView])
         
         addNavigationBar(leftButton: .back, hideNavBackground: true)
     }
@@ -222,30 +237,24 @@ class MovieDetailsViewController: BaseViewController {
             .trailing(30)
         )
         
-        castView.layout(
+        verticalStackView.layout(
             .leading(0),
             .trailing(0),
             .top(20, .to(summaryLabel, .bottom))
         )
         
-        directorView.layout(
-            .top(15, .to(castView, .bottom)),
-            .leading(Defines.leadingAlignment),
-            .trailing(0)
-        )
-        
         similarMoviesView.layout(
-            .top(20, .to(directorView, .bottom)),
+            .top(20, .to(verticalStackView, .bottom)),
             .leading(0),
             .trailing(0),
             .bottom(30)
         )
-        // view.layoutIfNeeded()
     }
 
     // MARK: Bind View Model
     
     private func bindViewModel() {
+        
         viewModel.movieDetails.done {[weak self] details in
             guard let self = self else { return }
             self.setContent(with: details)
@@ -297,7 +306,10 @@ class MovieDetailsViewController: BaseViewController {
         
         castView.cast = details.cast
         
-        directorView.setContent(director: details.director)
+        if let director = details.director {
+            directorView.isHidden = false
+            directorView.setContent(director: director)
+        }
         
         similarMoviesView.similarMovies = details.similar
         

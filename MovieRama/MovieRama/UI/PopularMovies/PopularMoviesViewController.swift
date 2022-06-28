@@ -188,7 +188,7 @@ extension PopularMoviesViewController: UITableViewDelegate, UITableViewDataSourc
         guard let movie = viewModel.dataModel(for: indexPath.row) else { return }
         
         let detailsViewController = MovieDetailsViewController()
-        detailsViewController.viewModel.fetchDetails(id: movie.id)
+        detailsViewController.viewModel.fetchMovie(with: movie.id, mediaType: movie.mediaType)
         baseNavigationController?.pushViewController(detailsViewController, animated: true)
     }
 }

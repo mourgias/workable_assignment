@@ -12,10 +12,17 @@ extension UITableViewCell {
     }
 }
 
-public extension UICollectionViewCell {
+extension UICollectionViewCell {
     
     static var id: String {
         return String(describing: self)
+    }
+}
+
+extension UIStackView {
+    
+    func addArrangedSubviews(_ views: [UIView]) {
+        views.forEach { addArrangedSubview($0) }
     }
 }
 

@@ -9,6 +9,8 @@ class DirectorView: UIView {
     
     // MARK: UI Properties
     
+    private let wrapperView = UIView()
+    
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.attributedText = "Director".style(font: .semiBold, size: 16)
@@ -54,12 +56,21 @@ class DirectorView: UIView {
     // MARK: SetupView
     
     private func setupView() {
-        addSubviews([titleLabel, directorImageView, nameLabel])
+        addSubview(wrapperView)
+        wrapperView.addSubviews([titleLabel, directorImageView, nameLabel])
     }
     
     // MARK: SetupLayout
     
     private func setupLayout() {
+
+        wrapperView.layout(
+            .leading(30),
+            .top(0),
+            .trailing(0),
+            .bottom(0)
+        )
+        
         titleLabel.layout(
             .top(0),
             .leading(0)

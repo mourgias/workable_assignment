@@ -7,7 +7,6 @@ import Foundation
 import Combine
 
 typealias Zip3<A, B, C> = Publishers.Zip3<APIResponse<A>, APIResponse<B>, APIResponse<C>>
-typealias CombineLatest3<A, B, C> = Publishers.CombineLatest3<APIResponse<A>, APIResponse<B>, APIResponse<C>>
 
 protocol MovieDetailsServiceProtocol {
     
@@ -15,81 +14,65 @@ protocol MovieDetailsServiceProtocol {
                                         APIResponseReviews?,
                                         APIReponseSimilarMovies?>
     
-    //func fetch(id: String) -> AnyPublisher<(APIReponseMovieDetails, APIReponseSimilarMovies?), NetworkError>
+    func fetchTV(id: String) -> Zip3<APIResponseTVDetails,
+                                        APIResponseReviews?,
+                                        APIReponseSimilarMovies?>
+
 }
 
 class MovieDetailsService: MovieDetailsServiceProtocol {
     
-    var cancel = Cancellable()
-    
     private let client = HTTPClient.shared
+    
+    // MARK: Fetch Movie Details
     
     func fetchMovie(id: String) -> Zip3<APIReponseMovieDetails, APIResponseReviews?, APIReponseSimilarMovies?> {
         
         let movieDetails: APIResponse<APIReponseMovieDetails> = client.getRequest(.movieDetails(id: id))
         
-        let movieReviews = fetchReviews(id: id)
+        let movieReviews: APIResponse<APIResponseReviews?> = client.getRequest(.movieReviews(id: id))
+            .proceedWith(with: nil)
         
-        let movieSimilar = fetchSimilar(id: id)
+        let movieSimilar: APIResponse<APIReponseSimilarMovies?> = client.getRequest(.movieSimilar(id: id))
+            .proceedWith(with: nil)
         
         return Zip3(movieDetails, movieReviews, movieSimilar)
     }
     
-    func fetchReviews(id: String) -> APIResponse<APIResponseReviews?> {
+    // MARK: Fetch TV Show Details
+    
+    func fetchTV(id: String) -> Zip3<APIResponseTVDetails, APIResponseReviews?, APIReponseSimilarMovies?> {
         
-        return client.getRequest(.movieReviews(id: id))
-            .catch { error -> APIResponse<APIResponseReviews?> in
-                return Just(nil)
-                    .setFailureType(to: NetworkError.self)
+        let tvDetails: APIResponse<APIResponseTVDetails> = client.getRequest(.tvDetails(id: id))
+        
+        let tvReviews: APIResponse<APIResponseReviews?> = client.getRequest(.tvReviews(id: id))
+            .proceedWith(with: nil)
+        
+        let tvSimilar: APIResponse<APIReponseSimilarMovies?> = client.getRequest(.tvSimilar(id: id))
+            .proceedWith(with: nil)
+        
+        return Zip3(tvDetails, tvReviews, tvSimilar)
+    }
+}
+
+extension Publisher {
+    
+    func proceedWith(with output: Self.Output) -> AnyPublisher<Self.Output, NetworkError> {
+        
+        // Catch and Print the Error
+        self.catch { error -> AnyPublisher<Self.Output, NetworkError> in
+            
+            debugPrint(error)
+            
+            if let error = error as? NetworkError {
+                return Fail(error: error)
                     .eraseToAnyPublisher()
             }
-            .eraseToAnyPublisher()
-        
-//            .replaceError(with: nil)
-//            .setFailureType(to: NetworkError.self)
-//            .eraseToAnyPublisher()
+            return Fail(error: NetworkError.invalidRequest)
+                .eraseToAnyPublisher()
+        }
+        .replaceError(with: output)
+        .setFailureType(to: NetworkError.self)
+        .eraseToAnyPublisher()
     }
-    
-    func fetchSimilar(id: String) -> APIResponse<APIReponseSimilarMovies?> {
-        
-        return client.getRequest(.movieSimilar(id: id))
-            .replaceError(with: nil)
-            .setFailureType(to: NetworkError.self)
-            .eraseToAnyPublisher()
-    }
-    
-//
-//    func fetch(id: String) -> AnyPublisher<(APIReponseMovieDetails, APIReponseSimilarMovies?), NetworkError> {
-//
-//        let movieDetails: APIResponse<APIReponseMovieDetails> = client.getRequest(.movieDetails(id: id))
-//        let movieCredits: APIResponse<APIResponseReviews> = client.getRequest(.movieReviews(id: id))
-//        let movieSimilar: APIResponse<APIReponseSimilarMovies> = client.getRequest(.movieSimilar(id: id))
-//
-//        let datum = fetchMovies(id: id).flatMap { details in
-//
-//            self.fetchSimilar(id: id)
-//
-//        }
-//        .eraseToAnyPublisher()
-//
-//        return fetchMovies(id: id).flatMap { details in
-//
-////            self.fetchSimilar(id: id)
-////                .replaceError(with: nil)
-//
-//            Just(details).setFailureType(to: NetworkError.self)
-//                .zip(self.fetchSimilar(id: id).replaceError(with: nil).setFailureType(to: NetworkError.self))
-//
-//        }.eraseToAnyPublisher()
-//    }
-//
-//    func fetchMovies(id: String) -> AnyPublisher<APIReponseMovieDetails, NetworkError> {
-//
-//        return client.getRequest(.movieDetails(id: id))
-//    }
-//
-//    func fetchSimilar(id: String) -> AnyPublisher<APIReponseSimilarMovies?, NetworkError> {
-//
-//        return client.getRequest(.movieSimilar(id: id))
-//    }
 }
