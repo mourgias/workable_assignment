@@ -10,7 +10,7 @@ struct APIReponseMovieDetails: Codable {
     let adult: Bool
     let backdropPath: String?
     let budget: Int
-    let genres: [APIReponseGenre]
+    let genres: [APIReponseMovieGenre]
     let homepage: String?
     let movieId: Int
     let imdbID, originalLanguage, originalTitle, overview: String?
@@ -93,7 +93,7 @@ struct APIReponseMovieDetails: Codable {
     }
 }
 
-struct APIReponseGenre: Codable {
+struct APIReponseMovieGenre: Codable {
     let id: Int
     let name: String
 }
