@@ -93,4 +93,22 @@ extension UITableView {
         tableFooterView = nil
         bottomIndicatorView = nil
     }
+    
+    // MARK: Empty data source
+    
+    func setEmptyDataSourceMessage(_ message: String) {
+        let messageLabel = UILabel(frame: CGRect(x: 0, y: 0,
+                                                 width: self.bounds.size.width, height: self.bounds.size.height))
+        
+        messageLabel.attributedText = message.style(font: .semiBold, size: 16, alignment: .center)
+        messageLabel.numberOfLines = 0
+        messageLabel.sizeToFit()
+
+        self.backgroundView = messageLabel
+        self.separatorStyle = .none
+    }
+
+    func removeEmptyDataSourceMessage() {
+        self.backgroundView = nil
+    }
 }

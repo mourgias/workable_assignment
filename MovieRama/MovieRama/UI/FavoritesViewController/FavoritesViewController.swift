@@ -82,6 +82,13 @@ class FavoritesViewController: BaseViewController {
 extension FavoritesViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        if viewModel.numberOfRows() == 0 {
+            tableView.setEmptyDataSourceMessage("You don't have any favorites yet")
+        } else {
+            tableView.removeEmptyDataSourceMessage()
+        }
+        
         return viewModel.numberOfRows()
     }
     
